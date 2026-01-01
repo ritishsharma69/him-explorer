@@ -1,5 +1,9 @@
 import Link from "next/link";
 
+// Render the packages listing dynamically so newly published packages
+// show up immediately on the public website without a redeploy.
+export const dynamic = "force-dynamic";
+
 import { Container } from "@/components/layout/container";
 import { Button } from "@/components/ui/button";
 import {

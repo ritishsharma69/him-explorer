@@ -1,5 +1,10 @@
 import { Suspense } from "react";
 
+// Always render the homepage dynamically so new content from the admin
+// (packages, collections, partner hotels) appears immediately without
+// needing a rebuild.
+export const dynamic = "force-dynamic";
+
 import { HeroSection } from "@/components/home/hero-section";
 import {
 	FeaturedPackagesSectionWithData,
