@@ -145,18 +145,18 @@ export async function updatePackageById(
     }
   }
 
-	  const updateData: UpdatePackageInput = {};
+		  const updateData: UpdatePackageInput = {};
 
-	  const entries = Object.entries(input) as [
-	    keyof UpdatePackageInput,
-	    UpdatePackageInput[keyof UpdatePackageInput],
-	  ][];
+		  const entries = Object.entries(input) as [
+		    keyof UpdatePackageInput,
+		    UpdatePackageInput[keyof UpdatePackageInput],
+		  ][];
 
-	  for (const [key, value] of entries) {
-	    if (value !== undefined) {
-	      updateData[key] = value;
-	    }
-	  }
+		  for (const [key, value] of entries) {
+		    if (value !== undefined) {
+		      (updateData as Record<string, unknown>)[key as string] = value;
+		    }
+		  }
 
   const updated = await PackageModel.findByIdAndUpdate(id, updateData, {
     new: true,

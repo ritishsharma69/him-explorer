@@ -7,10 +7,11 @@ function cn(...classes: Array<string | false | null | undefined>) {
 }
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "outline" | "ghost";
-  size?: "sm" | "md";
-}
+	extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+	  variant?: "primary" | "outline" | "ghost";
+	  // Allow a larger size for prominent CTAs (e.g. hero section buttons).
+	  size?: "sm" | "md" | "lg";
+	}
 
 export function Button({
   className,
@@ -28,10 +29,12 @@ export function Button({
 					? "border border-emerald-400/60 bg-transparent text-emerald-200 hover:bg-emerald-500/10"
 					: "bg-transparent text-emerald-200 hover:bg-emerald-500/10";
 
-  const sizeClasses =
-    size === "sm"
-      ? "px-3 py-1 text-[11px] uppercase tracking-[0.18em]"
-      : "px-4 py-2 text-xs uppercase tracking-[0.18em]";
+	  const sizeClasses =
+	    size === "sm"
+	      ? "px-3 py-1 text-[11px] uppercase tracking-[0.18em]"
+	      : size === "lg"
+	        ? "px-5 py-2.5 text-sm uppercase tracking-[0.18em]"
+	        : "px-4 py-2 text-xs uppercase tracking-[0.18em]";
 
   return (
     <button

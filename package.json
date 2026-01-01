@@ -14,13 +14,16 @@
     "@fortawesome/react-fontawesome": "^3.1.1",
     "@google/generative-ai": "^0.24.1",
     "bcryptjs": "^3.0.3",
+    "build": "^0.1.4",
     "gsap": "^3.14.2",
     "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.0.2",
     "next": "16.1.1",
     "nodemailer": "^7.0.12",
+    "npm": "^11.7.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
+    "run": "^1.5.0",
     "zod": "^4.2.1"
   },
   "devDependencies": {
