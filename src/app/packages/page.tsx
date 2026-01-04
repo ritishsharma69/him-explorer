@@ -97,21 +97,20 @@ export default async function PackagesPage() {
 											{pkg.shortDescription}
 										</p>
 									</div>
-									<div className="mt-4 flex items-end justify-between gap-2 text-xs">
-										<div>
-											<p className="text-[11px] text-slate-500">Starting from</p>
-											<p className="text-sm font-semibold text-sky-700">
-												{pkg.currencyCode}{" "}
-												{pkg.startingPricePerPerson.toLocaleString("en-IN")}
-												<span className="ml-1 text-[11px] font-normal text-slate-500">
-													per person
+											<div className="mt-4 flex items-end justify-between gap-2 text-xs">
+												<div>
+													<p className="text-[11px] font-semibold text-slate-600">
+														Want to know the price?
+													</p>
+													<p className="text-[11px] text-slate-500">
+														Open this itinerary to share your dates and group size for a
+														custom quote.
+													</p>
+												</div>
+												<span className="text-[11px] font-medium text-sky-600 opacity-0 transition group-hover:opacity-100">
+													View details
 												</span>
-											</p>
-										</div>
-										<span className="text-[11px] font-medium text-sky-600 opacity-0 transition group-hover:opacity-100">
-											View details
-										</span>
-									</div>
+											</div>
 								</Link>
 							))}
 						</div>

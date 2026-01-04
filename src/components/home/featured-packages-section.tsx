@@ -125,22 +125,20 @@ export function FeaturedPackagesSection({
 											{pkg.shortDescription}
 										</p>
 									</div>
-									<div className="mt-4 flex items-end justify-between gap-2 text-xs">
-										<div>
-											<p className="text-[11px] text-slate-500">Starting from</p>
-											<p className="mt-1 text-base font-semibold text-emerald-700">
-												{pkg.currencyCode}{" "}
-												{pkg.startingPricePerPerson.toLocaleString("en-IN")}
-												<span className="ml-1 text-[11px] font-normal text-slate-500">
-													per person
-												</span>
-											</p>
-										</div>
-										<span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100">
-											View details
-											<span aria-hidden>&rarr;</span>
-										</span>
-									</div>
+							<div className="mt-4 flex items-end justify-between gap-2 text-xs">
+								<div>
+									<p className="text-[11px] font-semibold text-slate-600">
+										Want to know the price?
+									</p>
+									<p className="mt-1 text-[11px] text-slate-500">
+										Tap to share your dates and group size for a custom quote.
+									</p>
+								</div>
+								<span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100">
+									View details
+									<span aria-hidden>&rarr;</span>
+								</span>
+							</div>
 								</Link>
 							))}
 					</div>

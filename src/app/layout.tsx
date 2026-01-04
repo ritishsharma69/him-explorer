@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { TravelChatbotWidget } from "@/components/chatbot/travel-chatbot-widget";
 import "./globals.css";
+import "react-day-picker/dist/style.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

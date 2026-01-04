@@ -2,8 +2,9 @@ import { Types } from "mongoose";
 
 import { connectToDatabase } from "@/server/db";
 import {
-	  EnquiryModel,
-	  type EnquiryDocument,
+	EnquiryModel,
+	type EnquiryDocument,
+	type EnquiryStatus,
 } from "@/server/models/enquiry.model";
 
 export interface CreateEnquiryInput {
@@ -71,5 +72,32 @@ export async function deleteEnquiryById(id: string): Promise<DeleteEnquiryResult
 	  }
 
 	  return { ok: true } as const;
+}
+
+export type UpdateEnquiryStatusResult =
+	  | { ok: true; enquiry: EnquiryDocument }
+	  | { ok: false; reason: "INVALID_ID" | "NOT_FOUND" };
+
+export async function updateEnquiryStatus(
+	id: string,
+	status: EnquiryStatus,
+): Promise<UpdateEnquiryStatusResult> {
+	await connectToDatabase();
+
+	if (!Types.ObjectId.isValid(id)) {
+		return { ok: false, reason: "INVALID_ID" } as const;
+	}
+
+	const updated = await EnquiryModel.findByIdAndUpdate(
+		id,
+		{ status },
+		{ new: true },
+	).exec();
+
+	if (!updated) {
+		return { ok: false, reason: "NOT_FOUND" } as const;
+	}
+
+	return { ok: true, enquiry: updated.toObject() as EnquiryDocument } as const;
 }
 
