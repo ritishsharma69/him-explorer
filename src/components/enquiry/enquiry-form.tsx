@@ -264,7 +264,7 @@ export function EnquiryForm({ packageId, packageTitle }: EnquiryFormProps) {
 	        <p className="text-[11px] text-rose-500">{errorMessage}</p>
       )}
       {successMessage && (
-	        <p className="text-[11px] text-emerald-600">{successMessage}</p>
+	        <p className="text-[11px] text-blue-700">{successMessage}</p>
       )}
 
       <Button type="submit" disabled={submitting} className="w-full sm:w-auto">

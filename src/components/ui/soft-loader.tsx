@@ -21,15 +21,15 @@ export function SoftLoader({
 
   return (
     <div
-      className={`inline-flex items-center gap-2 rounded-full bg-emerald-50 px-3.5 py-1.5 text-emerald-700 ring-1 ring-emerald-100 shadow-sm ${textSize} ${className}`}
+      className={`inline-flex items-center gap-2 rounded-full bg-blue-50 px-3.5 py-1.5 text-blue-800 ring-1 ring-blue-200 shadow-sm ${textSize} ${className}`}
       {...rest}
     >
-      <span className={`${dotSize} rounded-full bg-emerald-400 animate-pulse`} />
+      <span className={`${dotSize} rounded-full bg-blue-500 animate-pulse`} />
       <span
-        className={`${dotSize} rounded-full bg-emerald-400 animate-pulse [animation-delay:120ms]`}
+        className={`${dotSize} rounded-full bg-blue-500 animate-pulse [animation-delay:120ms]`}
       />
       <span
-        className={`${dotSize} rounded-full bg-emerald-400 animate-pulse [animation-delay:240ms]`}
+        className={`${dotSize} rounded-full bg-blue-500 animate-pulse [animation-delay:240ms]`}
       />
       <span className="ml-1 font-medium">{label}</span>
     </div>

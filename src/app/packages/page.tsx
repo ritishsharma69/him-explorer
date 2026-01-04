@@ -36,7 +36,7 @@ export default async function PackagesPage() {
 
 		  return (
 		    <main className="space-y-8 py-8">
-					<section className="border-y border-sky-100 bg-gradient-to-r from-sky-50 via-sky-100/60 to-emerald-50 py-6">
+					<section className="border-y border-sky-100 bg-gradient-to-r from-sky-50 via-sky-100/60 to-blue-50 py-6">
 						<Container className="space-y-4">
 							<p className="inline-flex items-center rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700 shadow-sm shadow-sky-200">
 								Himachal tour packages

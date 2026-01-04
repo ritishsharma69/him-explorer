@@ -172,8 +172,8 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 											href="/"
 											className={`border-b-2 pb-1.5 transition ${
 												pathname === "/"
-													? "border-emerald-400 text-emerald-200"
-													: "border-transparent text-slate-300 hover:text-emerald-200"
+													? "border-blue-500 text-blue-200"
+													: "border-transparent text-slate-300 hover:text-blue-200"
 											}`}
 										>
 											Home
@@ -182,8 +182,8 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 											href="/packages"
 											className={`border-b-2 pb-1.5 transition ${
 												pathname.startsWith("/packages")
-													? "border-emerald-400 text-emerald-200"
-													: "border-transparent text-slate-300 hover:text-emerald-200"
+													? "border-blue-500 text-blue-200"
+													: "border-transparent text-slate-300 hover:text-blue-200"
 											}`}
 										>
 											Packages
@@ -192,8 +192,8 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 											href="/reviews"
 											className={`border-b-2 pb-1.5 transition ${
 												pathname.startsWith("/reviews")
-													? "border-emerald-400 text-emerald-200"
-													: "border-transparent text-slate-300 hover:text-emerald-200"
+													? "border-blue-500 text-blue-200"
+													: "border-transparent text-slate-300 hover:text-blue-200"
 											}`}
 										>
 											Reviews
@@ -202,8 +202,8 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 											href="/about"
 											className={`hidden border-b-2 pb-1.5 transition sm:inline ${
 												pathname.startsWith("/about")
-													? "border-emerald-400 text-emerald-200"
-													: "border-transparent text-slate-300 hover:text-emerald-200"
+													? "border-blue-500 text-blue-200"
+													: "border-transparent text-slate-300 hover:text-blue-200"
 											}`}
 										>
 											About
@@ -212,15 +212,15 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 											href="/contact"
 											className={`hidden border-b-2 pb-1.5 transition sm:inline ${
 												pathname.startsWith("/contact")
-													? "border-emerald-400 text-emerald-200"
-													: "border-transparent text-slate-300 hover:text-emerald-200"
+													? "border-blue-500 text-blue-200"
+													: "border-transparent text-slate-300 hover:text-blue-200"
 											}`}
 										>
 											Contact
 										</Link>
 										<Link
 											href="/#contact"
-											className="hidden rounded-full bg-gradient-to-r from-emerald-500 via-emerald-400 to-lime-300 px-5 py-2 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.18em] text-slate-950 shadow-lg shadow-emerald-400/40 transition hover:brightness-110 sm:inline"
+											className="hidden rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 px-5 py-2 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.18em] text-white shadow-lg shadow-blue-500/40 transition hover:brightness-110 sm:inline"
 										>
 											Plan a trip
 										</Link>
@@ -254,7 +254,7 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 										}`}
 								>
 									<div className="mb-4 flex items-center justify-between">
-										<p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-300">
+										<p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-300">
 											Menu
 										</p>
 							<button
@@ -272,7 +272,7 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 												onClick={() => setIsMenuOpen(false)}
 												className={`block rounded-lg px-3 py-2 ${
 													pathname === "/"
-														? "bg-emerald-500/10 text-emerald-200"
+														? "bg-blue-600/10 text-blue-200"
 														: "text-slate-200 hover:bg-slate-800"
 												}`}
 											>
@@ -283,7 +283,7 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 												onClick={() => setIsMenuOpen(false)}
 												className={`block rounded-lg px-3 py-2 ${
 													pathname.startsWith("/packages")
-														? "bg-emerald-500/10 text-emerald-200"
+														? "bg-blue-600/10 text-blue-200"
 														: "text-slate-200 hover:bg-slate-800"
 												}`}
 											>
@@ -294,7 +294,7 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 												onClick={() => setIsMenuOpen(false)}
 												className={`block rounded-lg px-3 py-2 ${
 													pathname.startsWith("/reviews")
-														? "bg-emerald-500/10 text-emerald-200"
+														? "bg-blue-600/10 text-blue-200"
 														: "text-slate-200 hover:bg-slate-800"
 												}`}
 											>
@@ -305,7 +305,7 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 												onClick={() => setIsMenuOpen(false)}
 												className={`block rounded-lg px-3 py-2 ${
 													pathname.startsWith("/about")
-														? "bg-emerald-500/10 text-emerald-200"
+														? "bg-blue-600/10 text-blue-200"
 														: "text-slate-200 hover:bg-slate-800"
 												}`}
 											>
@@ -316,7 +316,7 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 												onClick={() => setIsMenuOpen(false)}
 												className={`block rounded-lg px-3 py-2 ${
 													pathname.startsWith("/contact")
-														? "bg-emerald-500/10 text-emerald-200"
+														? "bg-blue-600/10 text-blue-200"
 														: "text-slate-200 hover:bg-slate-800"
 												}`}
 											>
@@ -326,7 +326,7 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 							<Link
 									href="/#contact"
 									onClick={() => setIsMenuOpen(false)}
-									className="mt-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-emerald-500 via-emerald-400 to-lime-300 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-950 shadow-lg shadow-emerald-400/40 hover:brightness-110"
+									className="mt-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white shadow-lg shadow-blue-500/40 hover:brightness-110"
 							>
 								Plan a trip
 							</Link>

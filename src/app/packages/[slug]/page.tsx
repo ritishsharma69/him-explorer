@@ -231,7 +231,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
 
   return (
     <main className="py-10 sm:py-12">
-      <section className="pb-12 bg-gradient-to-b from-emerald-50/60 via-emerald-50/30 to-white">
+      <section className="pb-12 bg-gradient-to-b from-blue-50/60 via-blue-50/30 to-white">
         <Container className="grid gap-10 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-start">
           {/* Left column: all details */}
           <div className="space-y-8">
@@ -294,10 +294,10 @@ export default async function PackageDetailPage({ params }: PageProps) {
                   <h2 className="text-sm font-semibold text-slate-900 sm:text-base">
                     Day-wise plan
                   </h2>
-                  <ol className="space-y-3 border-l border-emerald-100 pl-4 text-xs text-slate-700 sm:text-sm">
+                  <ol className="space-y-3 border-l border-blue-200 pl-4 text-xs text-slate-700 sm:text-sm">
                     {pkg.itinerary.map((day) => (
                       <li key={day.dayNumber} className="relative space-y-1">
-                        <span className="absolute -left-[9px] mt-1 h-2 w-2 rounded-full bg-emerald-500" />
+                        <span className="absolute -left-[9px] mt-1 h-2 w-2 rounded-full bg-blue-600" />
                         <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-slate-500">
                           Day {day.dayNumber}
                         </p>
@@ -374,7 +374,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
           </div>
 
           {/* Right column: enquiry form, next to all details */}
-          <aside className="relative rounded-3xl border border-sky-100 bg-gradient-to-br from-white via-sky-50/70 to-emerald-50/70 p-4 text-xs text-slate-900 shadow-[0_18px_60px_rgba(15,23,42,0.14)] sm:p-5 lg:sticky lg:top-24">
+          <aside className="relative rounded-3xl border border-sky-100 bg-gradient-to-br from-white via-sky-50/70 to-blue-50/70 p-4 text-xs text-slate-900 shadow-[0_18px_60px_rgba(15,23,42,0.14)] sm:p-5 lg:sticky lg:top-24">
             <div className="space-y-3">
               <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700">
                 Plan this trip

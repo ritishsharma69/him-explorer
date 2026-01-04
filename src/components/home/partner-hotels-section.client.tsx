@@ -26,7 +26,7 @@ export function PartnerHotelsSectionClient({ hotels }: PartnerHotelsSectionClien
         <Container>
           <ScrollReveal className="flex flex-col gap-4 rounded-3xl bg-white/85 px-4 py-5 shadow-[0_18px_60px_rgba(15,23,42,0.12)] ring-1 ring-slate-100/90 backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-6">
             <div className="max-w-xs space-y-2">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-emerald-600">
+              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700">
                 Flagship stays we love booking
               </p>
               <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">
@@ -44,7 +44,7 @@ export function PartnerHotelsSectionClient({ hotels }: PartnerHotelsSectionClien
                   onClick={() => setActive({ hotel })}
                   className="group flex min-w-[190px] max-w-[210px] cursor-pointer flex-shrink-0 flex-col overflow-hidden rounded-2xl bg-white/95 text-slate-900 shadow-[0_10px_30px_rgba(15,23,42,0.08)] ring-1 ring-slate-100/80 transition-transform duration-300 hover:-translate-y-1 hover:shadow-[0_16px_40px_rgba(15,23,42,0.16)]"
                 >
-                  <div className="h-28 bg-gradient-to-tr from-emerald-50 via-slate-50 to-amber-50 sm:h-32">
+                  <div className="h-28 bg-gradient-to-tr from-blue-50 via-slate-50 to-amber-50 sm:h-32">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={hotel.imageUrl || "/harcode-image.png"}
@@ -72,11 +72,11 @@ export function PartnerHotelsSectionClient({ hotels }: PartnerHotelsSectionClien
       >
         {active && (
           <div className="space-y-3 p-4 sm:p-5 text-slate-900">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-600">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-700">
               Partner stay highlight
             </p>
             <div className="overflow-hidden rounded-2xl bg-white shadow-[0_10px_30px_rgba(15,23,42,0.16)] ring-1 ring-slate-100/80">
-              <div className="h-44 bg-gradient-to-tr from-emerald-50 via-slate-50 to-amber-50 sm:h-52">
+              <div className="h-44 bg-gradient-to-tr from-blue-50 via-slate-50 to-amber-50 sm:h-52">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={active.hotel.imageUrl || "/harcode-image.png"}

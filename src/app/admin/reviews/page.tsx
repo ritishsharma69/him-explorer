@@ -42,7 +42,7 @@ const INITIAL_FORM: FormState = {
 function getStatusClasses(status: string) {
 	switch (status) {
 		case "approved":
-			return "bg-emerald-100 text-emerald-800";
+			return "bg-blue-100 text-blue-900";
 		case "pending":
 			return "bg-amber-100 text-amber-800";
 		case "rejected":

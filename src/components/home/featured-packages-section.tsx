@@ -93,7 +93,7 @@ export function FeaturedPackagesSection({
 					</div>
 							<Link
 									href="/packages"
-									className="text-xs font-semibold text-emerald-700 underline-offset-4 hover:text-emerald-800 hover:underline"
+									className="text-xs font-semibold text-blue-800 underline-offset-4 hover:text-blue-900 hover:underline"
 							>
 						View all packages
 					</Link>
@@ -104,12 +104,12 @@ export function FeaturedPackagesSection({
 								<Link
 									key={pkg._id.toString()}
 									href={`/packages/${pkg.slug}`}
-									className="group flex flex-col justify-between rounded-3xl bg-white p-4 shadow-[0_18px_50px_rgba(15,23,42,0.45)] ring-1 ring-slate-900/5 transition-transform transition-shadow duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(15,23,42,0.65)] hover:ring-emerald-300/60"
+									className="group flex flex-col justify-between rounded-3xl bg-white p-4 shadow-[0_18px_50px_rgba(15,23,42,0.45)] ring-1 ring-slate-900/5 transition-transform transition-shadow duration-300 hover:-translate-y-1 hover:shadow-[0_24px_80px_rgba(15,23,42,0.65)] hover:ring-blue-400/60"
 								>
 									<div className="space-y-3">
 										<div className="flex items-center justify-between gap-2 text-[11px] text-slate-500">
 											<span className="truncate">{pkg.destinationName}</span>
-											<span className="rounded-full bg-emerald-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald-700">
+											<span className="rounded-full bg-blue-100 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-800">
 												{pkg.durationDays} days
 											</span>
 										</div>
@@ -134,7 +134,7 @@ export function FeaturedPackagesSection({
 										Tap to share your dates and group size for a custom quote.
 									</p>
 								</div>
-								<span className="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100">
+								<span className="inline-flex items-center gap-1 text-[11px] font-semibold text-blue-700 opacity-0 transition-all duration-200 group-hover:translate-x-0.5 group-hover:opacity-100">
 									View details
 									<span aria-hidden>&rarr;</span>
 								</span>
@@ -186,7 +186,7 @@ export function FeaturedPackagesSectionSkeleton() {
 							<div className="space-y-3">
 								<div className="flex items-center justify-between gap-2">
 									<div className="h-3 w-24 rounded-full bg-slate-100" />
-									<div className="h-5 w-16 rounded-full bg-emerald-100" />
+									<div className="h-5 w-16 rounded-full bg-blue-100" />
 								</div>
 								<div className="h-4 w-3/4 rounded-full bg-slate-200" />
 								<div className="h-3 w-full rounded-full bg-slate-100" />

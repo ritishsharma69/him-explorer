@@ -182,7 +182,7 @@ export default function AdminPackagesPage() {
 		                  <span
 		                    className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] ${
 		                      pkg.status === "published"
-		                        ? "bg-emerald-500/20 text-emerald-200"
+		                        ? "bg-blue-600/20 text-blue-200"
 		                        : pkg.status === "draft"
 		                          ? "bg-slate-500/30 text-slate-200"
 		                          : "bg-amber-500/20 text-amber-200"

@@ -68,7 +68,7 @@ export function PartnerHotelsSectionSkeleton() {
 								key={index}
 										className="flex min-w-[190px] max-w-[210px] flex-shrink-0 flex-col overflow-hidden rounded-2xl bg-white/95 shadow-[0_10px_30px_rgba(15,23,42,0.08)] ring-1 ring-slate-100/80 animate-pulse"
 							>
-										<div className="h-28 bg-gradient-to-tr from-emerald-50 via-slate-50 to-amber-50" />
+										<div className="h-28 bg-gradient-to-tr from-blue-50 via-slate-50 to-amber-50" />
 								<div className="flex flex-1 items-center px-3 py-2">
 									<div className="h-3 w-3/4 rounded-full bg-slate-200" />
 								</div>

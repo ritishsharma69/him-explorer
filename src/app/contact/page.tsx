@@ -59,7 +59,7 @@ export default function ContactPage() {
 
 	        <section
 	          id="trip-enquiry-form"
-	          className="relative rounded-3xl border border-sky-100 bg-gradient-to-br from-white via-sky-50/70 to-emerald-50/70 p-4 text-xs text-slate-900 shadow-[0_18px_60px_rgba(15,23,42,0.14)] sm:p-5"
+	          className="relative rounded-3xl border border-sky-100 bg-gradient-to-br from-white via-sky-50/70 to-blue-50/70 p-4 text-xs text-slate-900 shadow-[0_18px_60px_rgba(15,23,42,0.14)] sm:p-5"
 	        >
 	          <div className="space-y-4">
 	            <div>

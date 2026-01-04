@@ -242,7 +242,7 @@ function generateSessionId(): string {
 	          ref={toggleRef}
 	          type="button"
 	          onClick={openChat}
-					          className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-emerald-500 px-5 py-2.5 text-sm font-semibold text-slate-950 shadow-[0_12px_30px_rgba(16,185,129,0.65)] hover:bg-emerald-400"
+					          className="pointer-events-auto inline-flex items-center gap-2 rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-[0_12px_30px_rgba(37,99,235,0.65)] hover:bg-blue-500"
 		        >
 		          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[13px]">
 		            <FontAwesomeIcon icon={faPlaneDeparture} />
@@ -259,7 +259,7 @@ function generateSessionId(): string {
 		        >
 		            <div className="mb-3 flex items-center justify-between gap-2">
 			              <div className="flex items-center gap-2">
-			                <div className="relative flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-tr from-emerald-500 to-lime-300 text-sm text-slate-950 shadow-md shadow-emerald-400/40">
+			                <div className="relative flex h-9 w-9 items-center justify-center rounded-2xl bg-gradient-to-tr from-blue-600 to-sky-400 text-sm text-white shadow-md shadow-blue-500/40">
 		                <FontAwesomeIcon icon={faRobot} />
 		              </div>
               <div>
@@ -299,8 +299,8 @@ function generateSessionId(): string {
 					          <div
 					            className={
 					              m.sender === "bot"
-					                ? "max-w-[85%] rounded-2xl bg-emerald-50 px-3.5 py-2.5 text-[12px] text-slate-800 ring-1 ring-emerald-100"
-					                : "max-w-[85%] rounded-2xl bg-emerald-500 px-3.5 py-2.5 text-[12px] text-emerald-50 shadow-md shadow-emerald-400/40"
+					                ? "max-w-[85%] rounded-2xl bg-blue-50 px-3.5 py-2.5 text-[12px] text-slate-800 ring-1 ring-blue-200"
+					                : "max-w-[85%] rounded-2xl bg-blue-600 px-3.5 py-2.5 text-[12px] text-blue-50 shadow-md shadow-blue-500/40"
 					            }
 					          >
                   {m.text}
@@ -309,10 +309,10 @@ function generateSessionId(): string {
 		            ))}
 	            {isBotTyping && (
 		              <div className="flex justify-start" data-message>
-		                <div className="inline-flex items-center gap-1 rounded-2xl bg-emerald-50 px-3.5 py-2.5 text-[11px] text-emerald-700 ring-1 ring-emerald-100">
-	                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-	                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse [animation-delay:120ms]" />
-	                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse [animation-delay:240ms]" />
+		                <div className="inline-flex items-center gap-1 rounded-2xl bg-blue-50 px-3.5 py-2.5 text-[11px] text-blue-800 ring-1 ring-blue-200">
+	                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse" />
+	                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse [animation-delay:120ms]" />
+	                  <span className="h-1.5 w-1.5 rounded-full bg-blue-500 animate-pulse [animation-delay:240ms]" />
 	                  <span className="ml-1">Typing...</span>
 	                </div>
 	              </div>
@@ -328,14 +328,14 @@ function generateSessionId(): string {
 							      key={q}
 							      type="button"
 							      onClick={() => handleQuickQuestionClick(q)}
-							      className="pointer-events-auto rounded-full border border-emerald-200 bg-white px-3 py-1 text-[10px] sm:text-[11px] text-emerald-700 hover:bg-emerald-50"
+							      className="pointer-events-auto rounded-full border border-blue-300 bg-white px-3 py-1 text-[10px] sm:text-[11px] text-blue-800 hover:bg-blue-50"
 							    >
 							      {q}
 							    </button>
 							  ))}
 						            </div>
 						          )}
-							            <div className="flex items-center gap-2 rounded-2xl border border-emerald-200 bg-slate-50 px-3 py-2 shadow-[0_0_0_1px_rgba(52,211,153,0.5)]">
+							            <div className="flex items-center gap-2 rounded-2xl border border-blue-300 bg-slate-50 px-3 py-2 shadow-[0_0_0_1px_rgba(52,211,153,0.5)]">
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
@@ -344,7 +344,7 @@ function generateSessionId(): string {
               />
 				          <button
 				            type="submit"
-				            className="inline-flex h-8 items-center justify-center gap-1 rounded-full bg-emerald-500 px-4 text-[11px] sm:text-[12px] font-semibold text-emerald-50 shadow-[0_6px_18px_rgba(15,23,42,0.35)] hover:bg-emerald-600"
+				            className="inline-flex h-8 items-center justify-center gap-1 rounded-full bg-blue-600 px-4 text-[11px] sm:text-[12px] font-semibold text-blue-50 shadow-[0_6px_18px_rgba(15,23,42,0.35)] hover:bg-blue-700"
 				          >
 		                <FontAwesomeIcon icon={faPaperPlane} className="text-[10px]" />
 		                <span>Send</span>

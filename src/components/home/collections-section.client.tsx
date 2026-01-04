@@ -46,7 +46,7 @@ function CollectionsRow({ heading, description, items, onCardClick }: Collection
                 alt={item.title}
                 className="h-full w-full object-cover"
               />
-              <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-emerald-500 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-950 shadow-sm shadow-emerald-400/40">
+              <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-sm shadow-blue-500/40">
                 {item.badge}
               </span>
             </div>
@@ -98,7 +98,7 @@ export function CollectionsSectionClient({ primaryItems, offbeatItems }: Collect
       >
         {active && (
           <div className="space-y-3 p-4 sm:p-5 text-slate-900">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-emerald-600">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-blue-700">
               {active.heading}
             </p>
             <div className="overflow-hidden rounded-2xl bg-white shadow-[0_10px_30px_rgba(15,23,42,0.12)] ring-1 ring-slate-100/80">
@@ -109,7 +109,7 @@ export function CollectionsSectionClient({ primaryItems, offbeatItems }: Collect
                   alt={active.item.title}
                   className="h-full w-full object-cover"
                 />
-                <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-emerald-500 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-950 shadow-sm shadow-emerald-400/40">
+                <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-sm shadow-blue-500/40">
                   {active.item.badge}
                 </span>
               </div>

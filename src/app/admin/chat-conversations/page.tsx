@@ -95,7 +95,7 @@ export default function AdminChatConversationsPage() {
           <p className="text-red-600 mb-4">{error}</p>
           <button
             onClick={loadConversations}
-            className="rounded-lg bg-emerald-500 px-4 py-2 text-white hover:bg-emerald-600"
+            className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
           >
             Retry
           </button>
@@ -136,8 +136,8 @@ export default function AdminChatConversationsPage() {
                     onClick={() => setSelectedConversation(conv)}
                     className={`w-full rounded-lg border p-4 text-left transition-all ${
                       selectedConversation?._id === conv._id
-                        ? "border-emerald-500 bg-emerald-50"
-                        : "border-slate-200 bg-white hover:border-emerald-300"
+                        ? "border-blue-600 bg-blue-50"
+                        : "border-slate-200 bg-white hover:border-blue-400"
                     }`}
                   >
                     <div className="mb-2 flex items-center justify-between">
@@ -145,7 +145,7 @@ export default function AdminChatConversationsPage() {
                         {conv.userName || "Anonymous User"}
                       </span>
                       {conv.leadCaptured && (
-                        <span className="rounded-full bg-emerald-100 px-2 py-1 text-xs font-medium text-emerald-700">
+                        <span className="rounded-full bg-blue-100 px-2 py-1 text-xs font-medium text-blue-800">
                           Lead
                         </span>
                       )}
@@ -202,13 +202,13 @@ export default function AdminChatConversationsPage() {
                         <div
                           className={`max-w-[80%] rounded-lg px-4 py-2 ${
                             msg.role === "user"
-                              ? "bg-emerald-500 text-white"
+                              ? "bg-blue-600 text-white"
                               : "bg-slate-100 text-slate-800"
                           }`}
                         >
                           <p className="text-sm">{msg.content}</p>
                           <p
-                            className={`mt-1 text-xs ${msg.role === "user" ? "text-emerald-100" : "text-slate-500"}`}
+                            className={`mt-1 text-xs ${msg.role === "user" ? "text-blue-100" : "text-slate-500"}`}
                           >
                             {formatDate(msg.timestamp)}
                           </p>

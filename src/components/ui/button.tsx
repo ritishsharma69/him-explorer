@@ -20,14 +20,14 @@ export function Button({
   ...props
 }: ButtonProps) {
 			const base =
-				"inline-flex items-center justify-center rounded-full font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-60";
+				"inline-flex items-center justify-center rounded-full font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-400/80 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950 disabled:cursor-not-allowed disabled:opacity-60";
 
 			const variantClasses =
 				variant === "primary"
-					? "bg-emerald-500 text-slate-950 shadow-md shadow-emerald-500/40 hover:bg-emerald-400"
+					? "bg-blue-600 text-white shadow-md shadow-blue-600/40 hover:bg-blue-500"
 					: variant === "outline"
-					? "border border-emerald-400/60 bg-transparent text-emerald-200 hover:bg-emerald-500/10"
-					: "bg-transparent text-emerald-200 hover:bg-emerald-500/10";
+					? "border border-blue-400/60 bg-transparent text-blue-200 hover:bg-blue-600/10"
+					: "bg-transparent text-blue-200 hover:bg-blue-600/10";
 
 	  const sizeClasses =
 	    size === "sm"

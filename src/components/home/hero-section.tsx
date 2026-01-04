@@ -89,7 +89,7 @@ export function HeroSection() {
 						ref={leftColRef}
 						className="space-y-6 md:space-y-7"
 					>
-						<p className="inline-flex items-center rounded-full bg-emerald-50/95 px-4 py-1.5 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.25em] text-emerald-800 shadow-sm shadow-emerald-200/80 ring-1 ring-emerald-200">
+						<p className="inline-flex items-center rounded-full bg-blue-50/95 px-4 py-1.5 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.25em] text-blue-900 shadow-sm shadow-blue-300/80 ring-1 ring-blue-300">
 						Himachal getaways, handcrafted
 					</p>
 					<h1 className="text-balance text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl">
@@ -112,14 +112,14 @@ export function HeroSection() {
 							<Link href="/packages">
 								<Button
 									size="lg"
-									className="rounded-full bg-emerald-500 px-7 py-2.5 text-sm sm:text-base font-semibold text-slate-950 shadow-[0_18px_45px_rgba(16,185,129,0.65)] hover:bg-emerald-400 hover:shadow-[0_22px_60px_rgba(16,185,129,0.85)]"
+									className="rounded-full bg-blue-600 px-7 py-2.5 text-sm sm:text-base font-semibold text-white shadow-[0_18px_45px_rgba(37,99,235,0.65)] hover:bg-blue-500 hover:shadow-[0_22px_60px_rgba(37,99,235,0.85)]"
 								>
 									Browse Himachal packages
 								</Button>
 							</Link>
 							<a
 								href="#packages"
-								className="text-sm font-semibold text-emerald-800 underline-offset-4 hover:text-emerald-900 hover:underline"
+								className="text-sm font-semibold text-blue-900 underline-offset-4 hover:text-blue-950 hover:underline"
 							>
 								See popular trips
 							</a>
@@ -134,7 +134,7 @@ export function HeroSection() {
 							<div className="relative overflow-hidden rounded-3xl bg-white/40 p-5 text-[13px] text-slate-700 shadow-[0_20px_60px_rgba(15,23,42,0.35)] ring-1 ring-white/60 backdrop-blur-2xl sm:p-6 sm:text-sm">
 								<div className="mb-3 flex items-center justify-between gap-2">
 										<div className="space-y-1">
-										<p className="text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.22em] text-emerald-700">
+										<p className="text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.22em] text-blue-800">
 										Live like a local
 									</p>
 										<p className="text-[11px] sm:text-[12px] text-slate-500">

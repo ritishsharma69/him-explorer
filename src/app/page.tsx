@@ -33,7 +33,7 @@ import { ContactSection } from "@/components/home/contact-section";
 				<Suspense fallback={<PartnerHotelsSectionSkeleton />}>
 					<PartnerHotelsSection />
 				</Suspense>
-				<div className="bg-gradient-to-b from-emerald-50/60 via-emerald-50/30 to-white py-5">
+				<div className="bg-gradient-to-b from-blue-50/60 via-blue-50/30 to-white py-5">
 					<div className="space-y-10">
 						<Suspense fallback={<FeaturedPackagesSectionSkeleton />}>
 							<FeaturedPackagesSectionWithData />

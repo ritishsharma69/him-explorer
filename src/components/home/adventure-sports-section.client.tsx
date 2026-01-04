@@ -98,7 +98,7 @@ interface AdventureSportsSectionClientProps {
 		              ref={cardRef}
 		              className="group mx-auto w-full overflow-hidden rounded-3xl bg-white/95 text-slate-900 shadow-[0_16px_50px_rgba(15,23,42,0.16)] ring-1 ring-slate-100/90"
 		            >
-		              <div className="relative h-[22rem] bg-gradient-to-tr from-sky-50 via-slate-50 to-emerald-50 sm:h-[26rem] lg:h-[30rem]">
+		              <div className="relative h-[22rem] bg-gradient-to-tr from-sky-50 via-slate-50 to-blue-50 sm:h-[26rem] lg:h-[30rem]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={activeSport.imageUrl || "/harcode-image.png"}

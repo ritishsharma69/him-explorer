@@ -33,7 +33,7 @@ function getStatusClasses(status: string) {
 		case "in_progress":
 			return "bg-indigo-100 text-indigo-800";
 		case "closed":
-			return "bg-emerald-100 text-emerald-800";
+			return "bg-blue-100 text-blue-900";
 		default:
 			return "bg-slate-100 text-slate-700";
 	}
@@ -323,7 +323,7 @@ export default function AdminEnquiriesPage() {
 						type="button"
 						onClick={handleExportSelected}
 						disabled={!hasAnySelection}
-						className="rounded-full border border-emerald-400/70 bg-emerald-500/90 px-3 py-1 text-[11px] font-semibold text-slate-950 shadow-sm hover:bg-emerald-400 disabled:cursor-not-allowed disabled:opacity-60"
+						className="rounded-full border border-blue-500/70 bg-blue-600/90 px-3 py-1 text-[11px] font-semibold text-white shadow-sm hover:bg-blue-500 disabled:cursor-not-allowed disabled:opacity-60"
 					>
 						Export selected to Excel
 					</button>
@@ -410,7 +410,7 @@ export default function AdminEnquiriesPage() {
 							<th className="px-3 py-2">
 								<input
 									type="checkbox"
-									className="h-3.5 w-3.5 rounded border-slate-500 bg-slate-900 text-emerald-500 focus:ring-0"
+									className="h-3.5 w-3.5 rounded border-slate-500 bg-slate-900 text-blue-600 focus:ring-0"
 									checked={allVisibleSelected}
 									onChange={() => handleToggleSelectAll(filteredEnquiries)}
 									aria-label="Select all visible enquiries"
@@ -460,7 +460,7 @@ export default function AdminEnquiriesPage() {
 								<td className="px-3 py-2 align-top">
 									<input
 										type="checkbox"
-										className="h-3.5 w-3.5 rounded border-slate-500 bg-slate-900 text-emerald-500 focus:ring-0"
+										className="h-3.5 w-3.5 rounded border-slate-500 bg-slate-900 text-blue-600 focus:ring-0"
 										checked={selectedIds.has(enquiry._id)}
 										onChange={() => handleToggleSelect(enquiry._id)}
 										aria-label={`Select enquiry from ${enquiry.fullName}`}
@@ -543,7 +543,7 @@ export default function AdminEnquiriesPage() {
 													e.target.value as AdminEnquiry["status"],
 												)}
 											disabled={updatingStatusId === enquiry._id}
-											className="mt-1 w-full rounded-full border border-white/10 bg-slate-900/60 px-2 py-0.5 text-[10px] text-slate-100 outline-none focus:border-emerald-400"
+											className="mt-1 w-full rounded-full border border-white/10 bg-slate-900/60 px-2 py-0.5 text-[10px] text-slate-100 outline-none focus:border-blue-500"
 										>
 											<option value="new">New</option>
 											<option value="contacted">Read / contacted</option>
