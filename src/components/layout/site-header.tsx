@@ -45,12 +45,6 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 											alt="HimExplore logo"
 											className="h-7 w-auto transform origin-left scale-[4]"
 										/>
-										{/* eslint-disable-next-line @next/next/no-img-element */}
-										<img
-											src="/logo-text.png"
-											alt="HimExplore"
-											className="h-7 w-auto transform origin-left scale-[4] ml-24"
-										/>
 									</Link>
 									{/* Desktop nav */}
 									<div className="hidden items-center gap-2 sm:flex">
@@ -170,12 +164,6 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 											src="/logo.png"
 											alt="HimExplore logo"
 											className="h-7 w-auto transform origin-left scale-[4]"
-										/>
-									{/* eslint-disable-next-line @next/next/no-img-element */}
-									<img
-											src="/logo-text.png"
-											alt="HimExplore"
-											className="h-7 w-auto transform origin-left scale-[4] ml-24"
 										/>
 								</Link>
 								{/* Desktop nav */}
