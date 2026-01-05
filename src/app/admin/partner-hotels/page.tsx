@@ -80,7 +80,7 @@ export default function AdminPartnerHotelsPage() {
 		  const label = form.label.trim();
 		  if (!name || !label) {
 		    setError(
-		      "Name aur label dono bharna zaroori hai. Yehi home page pe dikhte hain.",
+		      "Both name and label are required. These are displayed on the home page.",
 		    );
 		    return;
 		  }
@@ -190,7 +190,7 @@ export default function AdminPartnerHotelsPage() {
 				const maxSizeMb = 2;
 				if (file.size > maxSizeMb * 1024 * 1024) {
 					setError(
-						`Image ka size ${maxSizeMb}MB se chhota rakho, warna upload bahut slow ho jata hai.`,
+						`Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
 					);
 					return;
 				}
@@ -206,7 +206,7 @@ export default function AdminPartnerHotelsPage() {
 				} catch (err) {
 					console.error(err);
 					setError(
-						"Image process karne mein issue aaya. Thoda chhota file try karo ya dubara upload karo.",
+						"There was an issue processing the image. Try a smaller file or upload again.",
 					);
 				}
 			}
@@ -277,7 +277,7 @@ export default function AdminPartnerHotelsPage() {
 		              className="block w-full text-[11px] text-slate-200 file:mr-3 file:rounded-full file:border-0 file:bg-sky-600 file:px-3 file:py-1.5 file:text-[11px] file:font-semibold file:text-white file:shadow-sm hover:file:bg-sky-700"
 	            />
 			            <p className="text-[10px] text-slate-400">
-		              Yahan se logo image upload karein. Neeche preview dikh jayega.
+		              Upload a logo image here. Preview will appear below.
 		            </p>
 	            {form.imageUrl && (
 	              <div className="mt-2 flex items-center gap-2">
@@ -406,7 +406,7 @@ export default function AdminPartnerHotelsPage() {
 		      <ConfirmDialog
 		        open={confirmDeleteId !== null}
 		        title="Delete this partner hotel?"
-		        description="Ye partner hotel ka logo aur naam home page se hat jayega. Ye action undo nahi ho sakta."
+		        description="This partner hotel logo and name will be removed from the home page. This action cannot be undone."
 		        confirmLabel={deletingId ? "Deleting..." : "Delete hotel"}
 		        cancelLabel="Cancel"
 		        tone="danger"

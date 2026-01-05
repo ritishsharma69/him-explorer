@@ -95,13 +95,13 @@ export default function AdminReviewsPage() {
 
 	    if (!fullName || !comment) {
 	      setError(
-	        "Name aur review text dono bharna zaroori hai. Yehi site par dikhte hain.",
+	        "Both name and review text are required. These are displayed on the site.",
 	      );
 	      return;
 	    }
 
 	    if (Number.isNaN(ratingValue) || ratingValue < 1 || ratingValue > 5) {
-	      setError("Rating 1 se 5 ke beech ka number hona chahiye.");
+	      setError("Rating must be a number between 1 and 5.");
 	      return;
 	    }
 
@@ -352,8 +352,7 @@ export default function AdminReviewsPage() {
 	            placeholder="What did they love about the trip?"
 	          />
 	          <p className="text-[11px] text-slate-400">
-	            Approved + featured reviews hi home page par carousel mein dikhte
-	            hain.
+	            Only approved + featured reviews appear in the home page carousel.
 	          </p>
 	        </div>
 	        <div className="flex flex-wrap items-center justify-between gap-3">
@@ -487,7 +486,7 @@ export default function AdminReviewsPage() {
 	      <ConfirmDialog
 	        open={confirmDeleteId !== null}
 	        title="Delete this review?"
-	        description="Ye review testimonials list se delete ho jayega. Agar galti se delete ho gaya to wapas nahi la paoge."
+	        description="This review will be deleted from the testimonials list. If deleted by mistake, it cannot be recovered."
 	        confirmLabel={deletingId ? "Deleting..." : "Delete"}
 	        cancelLabel="Cancel"
 	        tone="danger"

@@ -42,32 +42,32 @@ interface ItineraryFormItem {
 	function validatePackageForm(form: FormState): string | null {
 		const slug = form.slug.trim();
 		if (!slug) {
-			return "Slug field khali nahi reh sakta. Yehi URL ka part banta hai ( /packages/slug ).";
+			return "Slug field cannot be empty. This becomes part of the URL ( /packages/slug ).";
 		}
 
 		const slugPattern = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 		if (!slugPattern.test(slug)) {
-			return "Slug sirf chhote letters (a-z), numbers (0-9) aur hyphen (-) se banao. Space ya special characters mat use karo. Example: weekend-manali-from-delhi.";
+			return "Slug should only contain lowercase letters (a-z), numbers (0-9), and hyphens (-). No spaces or special characters. Example: weekend-manali-from-delhi.";
 		}
 
 		if (!form.title.trim()) {
-			return "Title zaroori hai. Card par yahi heading dikhegi.";
+			return "Title is required. This will be the heading shown on the card.";
 		}
 		if (!form.destinationName.trim()) {
-			return "Destination name zaroori hai (jaise Manali, Kasol).";
+			return "Destination name is required (e.g., Manali, Kasol).";
 		}
 		if (!form.shortDescription.trim()) {
-				return "Short description chhota summary hota hai, ye bhi bharna zaroori hai.";
+				return "Short description is required. This is a brief summary of the package.";
 		}
 
 		const duration = Number.parseInt(form.durationDays || "0", 10);
 		if (!Number.isFinite(duration) || duration < 1) {
-			return "Duration (days) kam se kam 1 honi chahiye.";
+			return "Duration must be at least 1 day.";
 		}
 
 		const price = Number.parseFloat(form.startingPricePerPerson || "0");
 		if (!Number.isFinite(price) || price < 0) {
-			return "Starting price per person 0 ya usse zyada rakho. Negative value allow nahi hai.";
+			return "Starting price per person must be 0 or greater. Negative values are not allowed.";
 		}
 
 		return null;
@@ -125,7 +125,7 @@ export default function AdminNewPackagePage() {
 	    for (const file of Array.from(files)) {
 	      if (file.size > maxSizeMb * 1024 * 1024) {
 	        setError(
-	          `Image ka size ${maxSizeMb}MB se chhota rakho, warna upload bahut slow ho jata hai.`,
+	          `Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
 	        );
 	        return;
 	      }
@@ -152,7 +152,7 @@ export default function AdminNewPackagePage() {
 	    } catch (err) {
 	      console.error(err);
 	      setError(
-	        "Gallery images process karne mein issue aaya. Thoda chhota file try karo ya dubara upload karo.",
+	        "There was an issue processing gallery images. Try smaller files or upload again.",
 	      );
 	    }
 	  }
@@ -172,7 +172,7 @@ export default function AdminNewPackagePage() {
 			    const heroImageUrl = form.heroImageUrl.trim() || galleryImageUrls[0] || "";
 			    if (!heroImageUrl) {
 			      setError(
-			        "Kam se kam ek trip photo upload karo. Pehli photo hero image ke liye use hoti hai (card ke background mein).",
+			        "Upload at least one trip photo. The first photo is used as the hero image (card background).",
 			      );
 			      return;
 			    }
@@ -276,8 +276,8 @@ export default function AdminNewPackagePage() {
 		              required
 		            />
 		            <p className="text-[10px] text-slate-400">
-		              Slug URL ka part hota hai: <span className="font-mono">/packages/your-slug</span>. Sirf
-		              chhote letters, numbers aur <span className="font-mono">-</span> use karein.
+		              The slug becomes part of the URL: <span className="font-mono">/packages/your-slug</span>. Use only
+		              lowercase letters, numbers, and <span className="font-mono">-</span>.
 		            </p>
 		          </div>
 		        </div>
@@ -482,10 +482,9 @@ export default function AdminNewPackagePage() {
 		            )}
 		          </div>
 		          <p className="text-[10px] text-slate-400">
-		            Yahan jo images upload karoge, woh package page ke &quot;Trip
-		            photos&quot; section mein dikhenge. Pehli photo hero image ke liye
-		            use hoti hai (card ke background mein). Ek baar mein multiple
-		            files select kar sakte ho. Recommended: 3–6 photos.
+		            Images uploaded here will appear in the package page&apos;s &quot;Trip
+		            photos&quot; section. The first photo is used as the hero image
+		            (card background). You can select multiple files at once. Recommended: 3–6 photos.
 		          </p>
 		          {linesToArray(form.galleryImageUrls).length > 0 && (
 		            <div className="mt-2 grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -524,8 +523,8 @@ export default function AdminNewPackagePage() {
 	              <option value="archived">Archived</option>
 	            </select>
 	            <p className="text-[10px] text-slate-400">
-	              Public website par cards sirf <span className="font-semibold">Published</span> packages ke liye
-	              dikhenge. Draft/Archived packages sirf admin panel mein rahenge.
+	              Cards on the public website only show for <span className="font-semibold">Published</span> packages.
+	              Draft/Archived packages remain only in the admin panel.
 	            </p>
 	          </div>
 	          <div className="space-y-1 sm:col-span-2">

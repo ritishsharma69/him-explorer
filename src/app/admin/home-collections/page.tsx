@@ -97,7 +97,7 @@ export default function AdminHomeCollectionsPage() {
 		  const badge = form.badge.trim();
 		  if (!title || !subtitle) {
 		    setError(
-		      "Title aur subtitle dono bharna zaroori hai. Yehi home page cards par dikhte hain.",
+		      "Both title and subtitle are required. These are displayed on the home page cards.",
 		    );
 		    return;
 		  }
@@ -210,7 +210,7 @@ export default function AdminHomeCollectionsPage() {
 				const maxSizeMb = 2;
 				if (file.size > maxSizeMb * 1024 * 1024) {
 					setError(
-						`Image ka size ${maxSizeMb}MB se chhota rakho, warna upload bahut slow ho jata hai.`,
+						`Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
 					);
 					return;
 				}
@@ -226,7 +226,7 @@ export default function AdminHomeCollectionsPage() {
 				} catch (err) {
 					console.error(err);
 					setError(
-						"Image process karne mein issue aaya. Thoda chhota file try karo ya dubara upload karo.",
+						"There was an issue processing the image. Try a smaller file or upload again.",
 					);
 				}
 			}
@@ -290,8 +290,8 @@ export default function AdminHomeCollectionsPage() {
 	        </div>
 	        <p className="max-w-xs text-[10px] text-slate-400">
 	          {activeCategory === "top"
-	            ? "Ye cards home page ke \"Top 10 Himachal collections\" wale row mein dikhte hain."
-	            : "Ye cards \"Unlock lesser-known wonders of Himachal\" wale row mein dikhte hain."}
+	            ? "These cards appear in the \"Top 10 Himachal collections\" row on the home page."
+	            : "These cards appear in the \"Unlock lesser-known wonders of Himachal\" row on the home page."}
 	        </p>
 	      </div>
 
@@ -312,7 +312,7 @@ export default function AdminHomeCollectionsPage() {
 	                : "Unlock lesser-known Himachal row"}
 	            </p>
 	            <p className="text-[10px] text-slate-400">
-	              Yahan jo cards add karoge, sirf isi row mein dikhenge.
+	              Cards added here will only appear in this row.
 	            </p>
 	          </div>
 	          <div className="flex-1 space-y-1 min-w-[180px]">
@@ -373,7 +373,7 @@ export default function AdminHomeCollectionsPage() {
 		              className="block w-full text-[11px] text-slate-200 file:mr-3 file:rounded-full file:border-0 file:bg-sky-600 file:px-3 file:py-1.5 file:text-[11px] file:font-semibold file:text-white file:shadow-sm hover:file:bg-sky-700"
 		            />
 		            <p className="text-[10px] text-slate-400">
-		              Yahan se image upload karein. Neeche preview dikh jayega.
+		              Upload an image here. Preview will appear below.
 		            </p>
 		            {form.imageUrl && (
 		              <div className="mt-2 flex items-center gap-2">
@@ -401,8 +401,8 @@ export default function AdminHomeCollectionsPage() {
 		        <div className="flex flex-wrap items-center justify-between gap-3">
 		          <div className="text-[11px] text-slate-400">
 		            {editingId
-		              ? "Editing existing card. Changes issi row ke cards par reflect honge."
-		              : "Naya collection card add karein jo selected row par dikhega."}
+		              ? "Editing existing card. Changes will reflect on cards in this row."
+		              : "Add a new collection card that will appear in the selected row."}
 		          </div>
 		          <div className="flex items-center gap-2">
 		            {editingId && (
@@ -522,7 +522,7 @@ export default function AdminHomeCollectionsPage() {
 		      <ConfirmDialog
 		        open={confirmDeleteId !== null}
 		        title="Delete this collection card?"
-		        description="Ye card home page se turant hat jayega. Ye action undo nahi ho sakta."
+		        description="This card will be removed from the home page immediately. This action cannot be undone."
 		        confirmLabel={deletingId ? "Deleting..." : "Delete"}
 		        cancelLabel="Cancel"
 		        tone="danger"

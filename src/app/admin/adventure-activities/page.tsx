@@ -99,7 +99,7 @@ export default function AdminAdventureActivitiesPage() {
 	    const maxSizeMb = 2;
 	    if (file.size > maxSizeMb * 1024 * 1024) {
 	      setError(
-	        `Image ka size ${maxSizeMb}MB se chhota rakho, warna upload bahut slow ho jata hai.`,
+	        `Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
 	      );
 	      return;
 	    }
@@ -115,7 +115,7 @@ export default function AdminAdventureActivitiesPage() {
 	    } catch (err) {
 	      console.error(err);
 	      setError(
-	        "Image process karne mein issue aaya. Thoda chhota file try karo ya dubara upload karo.",
+	        "There was an issue processing the image. Try a smaller file or upload again.",
 	      );
 	    }
 	  }
@@ -258,7 +258,7 @@ export default function AdminAdventureActivitiesPage() {
 	              className="block w-full text-[11px] text-slate-200 file:mr-3 file:rounded-full file:border-0 file:bg-sky-600 file:px-3 file:py-1.5 file:text-[11px] file:font-semibold file:text-white file:shadow-sm hover:file:bg-sky-700"
 	            />
 	            <p className="text-[10px] text-slate-400">
-	              Device se image select karo, neeche chhota preview dikh jayega.
+	              Select an image from your device. A small preview will appear below.
 	            </p>
 	            {form.imageUrl && (
 	              <div className="mt-2 flex items-center gap-2">
@@ -366,7 +366,7 @@ export default function AdminAdventureActivitiesPage() {
 		      <ConfirmDialog
 		        open={confirmDeleteId !== null}
 		        title="Delete this activity?"
-		        description="Ye activity homepage ke adventure slider se hat jayegi. Ye action undo nahi ho sakta."
+		        description="This activity will be removed from the homepage adventure slider. This action cannot be undone."
 		        confirmLabel={deletingId ? "Deleting..." : "Delete activity"}
 		        cancelLabel="Cancel"
 		        tone="danger"

@@ -83,6 +83,7 @@ export default function AdminEnquiriesPage() {
 	const [updatingStatusId, setUpdatingStatusId] = useState<string | null>(null);
 	const [startDateFilter, setStartDateFilter] = useState("");
 	const [endDateFilter, setEndDateFilter] = useState("");
+	const [customizeEnquiry, setCustomizeEnquiry] = useState<AdminEnquiry | null>(null);
 
 	async function loadEnquiries() {
 		setLoading(true);
@@ -275,6 +276,48 @@ export default function AdminEnquiriesPage() {
 		link.click();
 		document.body.removeChild(link);
 		URL.revokeObjectURL(url);
+	}
+
+	function handleCustomize(enquiry: AdminEnquiry) {
+		setCustomizeEnquiry(enquiry);
+	}
+
+	function getEnquiryText(enquiry: AdminEnquiry) {
+		const tripDate = enquiry.preferredStartDate
+			? formatDate(enquiry.preferredStartDate)
+			: "Not specified";
+		const budget = enquiry.budgetPerPersonMin
+			? `₹${enquiry.budgetPerPersonMin.toLocaleString("en-IN")} per person`
+			: "Not specified";
+		const totalPeople = enquiry.numberOfAdults + enquiry.numberOfChildren;
+
+		return `GUEST DETAILS
+Name: ${enquiry.fullName}
+Email: ${enquiry.email}
+Phone: ${enquiry.phoneCountryCode} ${enquiry.phoneNumber}
+
+TRIP REQUIREMENTS
+Number of Adults: ${enquiry.numberOfAdults}
+Number of Children: ${enquiry.numberOfChildren}
+Total Travelers: ${totalPeople}
+Preferred Start Date: ${tripDate}
+Budget: ${budget}
+
+GUEST MESSAGE
+${enquiry.message || "No message provided"}
+
+Source: ${enquiry.howDidYouHear || "Not specified"}
+Enquiry Date: ${formatDate(enquiry.createdAt)}`;
+	}
+
+	function handleCopyText() {
+		if (!customizeEnquiry) return;
+		const text = getEnquiryText(customizeEnquiry);
+		navigator.clipboard.writeText(text).then(() => {
+			alert("Copied to clipboard!");
+		}).catch(() => {
+			alert("Failed to copy. Please select and copy manually.");
+		});
 	}
 
 	const hasDateFilter = Boolean(startDateFilter || endDateFilter);
@@ -558,14 +601,23 @@ export default function AdminEnquiriesPage() {
 									</p>
 								</td>
 								<td className="px-3 py-2 align-top text-right">
-									<button
-										type="button"
-										onClick={() => setConfirmDeleteId(enquiry._id)}
-										disabled={deletingId === enquiry._id}
-										className="rounded-full bg-rose-500/90 px-2.5 py-1 text-[10px] font-semibold text-rose-50 shadow-sm hover:bg-rose-500 disabled:opacity-60"
-									>
-										{deletingId === enquiry._id ? "Deleting..." : "Delete"}
-									</button>
+									<div className="flex flex-col items-end gap-1.5">
+										<button
+											type="button"
+											onClick={() => setConfirmDeleteId(enquiry._id)}
+											disabled={deletingId === enquiry._id}
+											className="rounded-full bg-rose-500/90 px-2.5 py-1 text-[10px] font-semibold text-rose-50 shadow-sm hover:bg-rose-500 disabled:opacity-60"
+										>
+											{deletingId === enquiry._id ? "Deleting..." : "Delete"}
+										</button>
+										<button
+											type="button"
+											onClick={() => handleCustomize(enquiry)}
+											className="rounded-full bg-blue-600/90 px-2.5 py-1 text-[10px] font-semibold text-white shadow-sm hover:bg-blue-500"
+										>
+											Customize
+										</button>
+									</div>
 								</td>
 							</tr>
 						))}
@@ -585,7 +637,7 @@ export default function AdminEnquiriesPage() {
 			<ConfirmDialog
 				open={confirmDeleteId !== null}
 				title="Delete this enquiry?"
-				description="Ye enquiry admin table se delete ho jayegi. Agar galti se delete ho gaya to wapas nahi la paoge."
+				description="This enquiry will be deleted from the admin table. If deleted by mistake, it cannot be recovered."
 				confirmLabel={deletingId ? "Deleting..." : "Delete"}
 				cancelLabel="Cancel"
 				tone="danger"
@@ -598,6 +650,47 @@ export default function AdminEnquiriesPage() {
 					void handleConfirmDelete();
 				}}
 			/>
+
+			{/* Customize Text Dialog */}
+			{customizeEnquiry && (
+				<div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
+					<div className="max-h-[80vh] w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-2xl">
+						<div className="flex items-center justify-between border-b border-slate-200 px-5 py-3">
+							<h3 className="text-sm font-semibold text-slate-900">
+								Enquiry Details - {customizeEnquiry.fullName}
+							</h3>
+							<button
+								type="button"
+								onClick={() => setCustomizeEnquiry(null)}
+								className="text-slate-400 hover:text-slate-600"
+							>
+								✕
+							</button>
+						</div>
+						<div className="max-h-[50vh] overflow-y-auto p-5">
+							<pre className="whitespace-pre-wrap rounded-lg bg-slate-50 p-4 text-xs text-slate-700 font-mono leading-relaxed">
+								{getEnquiryText(customizeEnquiry)}
+							</pre>
+						</div>
+						<div className="flex items-center justify-end gap-2 border-t border-slate-200 px-5 py-3">
+							<button
+								type="button"
+								onClick={() => setCustomizeEnquiry(null)}
+								className="rounded-full px-4 py-1.5 text-[11px] font-medium text-slate-600 hover:bg-slate-100"
+							>
+								Close
+							</button>
+							<button
+								type="button"
+								onClick={handleCopyText}
+								className="rounded-full bg-blue-600 px-4 py-1.5 text-[11px] font-medium text-white hover:bg-blue-500"
+							>
+								Copy to Clipboard
+							</button>
+						</div>
+					</div>
+				</div>
+			)}
 		</div>
 	);
 }

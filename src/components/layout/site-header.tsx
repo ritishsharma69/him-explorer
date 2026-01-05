@@ -219,7 +219,7 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 											Contact
 										</Link>
 										<Link
-											href="/#contact"
+											href="/contact"
 											className="hidden rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 px-5 py-2 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.18em] text-white shadow-lg shadow-blue-500/40 transition hover:brightness-110 sm:inline"
 										>
 											Plan a trip
@@ -324,7 +324,7 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 											</Link>
 									</nav>
 							<Link
-									href="/#contact"
+									href="/contact"
 									onClick={() => setIsMenuOpen(false)}
 									className="mt-4 inline-flex items-center justify-center rounded-full bg-gradient-to-r from-blue-600 via-blue-500 to-sky-400 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.18em] text-white shadow-lg shadow-blue-500/40 hover:brightness-110"
 							>

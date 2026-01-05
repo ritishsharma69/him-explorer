@@ -77,9 +77,9 @@ interface AdventureSportsSectionClientProps {
 			            Fun activities & treks with HimExplore
 			          </p>
 			          <p className="text-xs text-slate-500 sm:text-[13px]">
-			            River rafting, paragliding, camping aur short treks &mdash; sab kuch
-			            trusted local partners aur professional guides ke saath planned hota
-			            hai, so you can safely add adventure to any trip.
+			            River rafting, paragliding, camping, and short treks &mdash; all planned
+			            with trusted local partners and professional guides, so you can safely
+			            add adventure to any trip.
 			          </p>
 			        </div>
 			        <div className="mx-auto flex max-w-6xl items-center gap-4 sm:gap-6">
