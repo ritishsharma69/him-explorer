@@ -124,6 +124,20 @@ export function HeroSection() {
 								See popular trips
 							</a>
 						</div>
+						{/* Trust badge */}
+						<div className="flex items-center gap-3 pt-4">
+							<div className="flex items-center gap-3.5 rounded-full bg-white/90 px-5 py-2.5 shadow-md ring-1 ring-slate-200/70 backdrop-blur-sm">
+								{/* eslint-disable-next-line @next/next/no-img-element */}
+								<img
+									src="/himachal-tourism.png"
+									alt="Himachal Tourism"
+									className="h-12 w-auto object-contain sm:h-14"
+								/>
+								<span className="text-sm font-semibold text-slate-700 sm:text-base">
+									Trusted by Himachal Tourism
+								</span>
+							</div>
+						</div>
 					</div>
 	
 							<div
