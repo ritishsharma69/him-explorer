@@ -43,7 +43,7 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 										<img
 											src="/logo.png"
 											alt="HimExplore logo"
-											className="h-6 w-auto transform origin-left scale-[4]"
+											className="h-6 w-auto transform origin-left scale-[7] mt-[5px]"
 										/>
 									</Link>
 									{/* Desktop nav */}
@@ -163,7 +163,7 @@ const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 									<img
 											src="/logo.png"
 											alt="HimExplore logo"
-											className="h-6 w-auto transform origin-left scale-[4]"
+											className="h-6 w-auto transform origin-left scale-[7] mt-[5px]"
 										/>
 								</Link>
 								{/* Desktop nav */}
