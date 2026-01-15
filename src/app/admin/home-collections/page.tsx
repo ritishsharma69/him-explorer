@@ -207,7 +207,7 @@ export default function AdminHomeCollectionsPage() {
 				const file = event.target.files?.[0];
 				if (!file) return;
 
-				const maxSizeMb = 10;
+				const maxSizeMb = 15;
 				if (file.size > maxSizeMb * 1024 * 1024) {
 					setError(
 						`Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
