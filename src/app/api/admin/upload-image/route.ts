@@ -14,11 +14,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "No file uploaded" }, { status: 400 });
   }
 
-  // Basic 5 MB limit to avoid huge uploads.
-  const maxSizeBytes = 5 * 1024 * 1024;
+  // Basic 10 MB limit to avoid huge uploads.
+  const maxSizeBytes = 10 * 1024 * 1024;
   if (file.size > maxSizeBytes) {
     return NextResponse.json(
-      { error: "File too large. Max size is 5MB." },
+      { error: "File too large. Max size is 10MB." },
       { status: 400 },
     );
   }

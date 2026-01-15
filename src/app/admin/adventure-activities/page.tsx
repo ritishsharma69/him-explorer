@@ -96,7 +96,7 @@ export default function AdminAdventureActivitiesPage() {
 	    const file = event.target.files?.[0];
 	    if (!file) return;
 
-	    const maxSizeMb = 2;
+	    const maxSizeMb = 10;
 	    if (file.size > maxSizeMb * 1024 * 1024) {
 	      setError(
 	        `Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
