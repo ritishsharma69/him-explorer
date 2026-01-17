@@ -25,7 +25,6 @@ interface FormState {
 	currencyCode: string;
 	shortDescription: string;
 	detailedDescription: string;
-	heroImageUrl: string;
 	galleryImageUrls: string;
 	highlights: string;
 	inclusions: string;
@@ -47,7 +46,6 @@ interface AdminPackageResponse {
 		currencyCode: string;
 		shortDescription: string;
 		detailedDescription?: string;
-		heroImageUrl: string;
 		highlights?: string[];
 		inclusions?: string[];
 		exclusions?: string[];
@@ -87,8 +85,10 @@ function arrayToLines(value?: string[]): string {
 			if (!form.shortDescription.trim()) {
 				return "Short description is required. This is a brief summary of the package.";
 			}
-			if (!form.heroImageUrl.trim()) {
-				return "Hero image is required. This image is used as the card background.";
+			// Check if at least one trip photo exists (first one becomes card background)
+			const galleryUrls = form.galleryImageUrls.trim();
+			if (!galleryUrls) {
+				return "At least one trip photo is required. The first photo will be used as the card background.";
 			}
 
 		const duration = Number.parseInt(form.durationDays || "0", 10);
@@ -127,84 +127,90 @@ export default function AdminEditPackagePage() {
       .filter(Boolean);
   }
 
-	  async function handleHeroImageFileChange(
-	    event: ChangeEvent<HTMLInputElement>,
-	  ) {
-	    if (!form) return;
+  // Delete gallery photo and save immediately to database
+  async function handleDeleteGalleryPhoto(index: number) {
+    if (!form || !packageId) return;
 
-	    const file = event.target.files?.[0];
-	    if (!file) return;
+    const urls = linesToArray(form.galleryImageUrls);
+    urls.splice(index, 1);
+    const newGalleryUrls = urls.join("\n");
 
-	    const maxSizeMb = 15;
-	    if (file.size > maxSizeMb * 1024 * 1024) {
-	      setError(
-	        `Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
-	      );
-	      return;
-	    }
+    // Update local state immediately
+    setForm((prev) => prev ? { ...prev, galleryImageUrls: newGalleryUrls } : prev);
 
-	    try {
-	      setError(null);
-	      const compressedDataUrl = await readAndCompressImageFile(file, {
-	        maxWidth: 1600,
-	        maxHeight: 900,
-	        quality: 0.85,
-	      });
-	      setForm((prev) =>
-	        prev ? { ...prev, heroImageUrl: compressedDataUrl } : prev,
-	      );
-	    } catch (err) {
-	      console.error(err);
-	      setError(
-	        "There was an issue processing the image. Try a smaller file or upload again.",
-	      );
-	    }
-	  }
+    // Save to database immediately
+    try {
+      const res = await fetch(`/api/admin/packages/${packageId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ galleryImageUrls: urls }),
+      });
 
-			async function handleGalleryImageFilesChange(
-			  event: ChangeEvent<HTMLInputElement>,
-			) {
-	    if (!form) return;
+      if (!res.ok) {
+        const data = (await res.json().catch(() => null)) as { error?: string } | null;
+        setError(data?.error ?? "Failed to delete photo");
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Failed to delete photo. Please try again.");
+    }
+  }
 
-	    const files = event.target.files;
-	    if (!files || files.length === 0) return;
+  async function handleGalleryImageFilesChange(
+    event: ChangeEvent<HTMLInputElement>,
+  ) {
+    if (!form || !packageId) return;
 
-	    const maxSizeMb = 15;
-	    for (const file of Array.from(files)) {
-	      if (file.size > maxSizeMb * 1024 * 1024) {
-	        setError(
-	          `Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
-	        );
-	        return;
-	      }
-	    }
+    const files = event.target.files;
+    if (!files || files.length === 0) return;
 
-	    try {
-	      setError(null);
-	      const urls: string[] = [];
-	      for (const file of Array.from(files)) {
-	        const compressedDataUrl = await readAndCompressImageFile(file, {
-	          maxWidth: 1600,
-	          maxHeight: 900,
-	          quality: 0.85,
-	        });
-	        urls.push(compressedDataUrl);
-	      }
+    const maxSizeMb = 15;
+    for (const file of Array.from(files)) {
+      if (file.size > maxSizeMb * 1024 * 1024) {
+        setError(
+          `Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
+        );
+        return;
+      }
+    }
 
-	      setForm((prev) => {
-	        if (!prev) return prev;
-	        const existing = prev.galleryImageUrls.trim();
-	        const lines = existing ? existing.split("\n") : [];
-	        const nextLines = [...lines, ...urls];
-	        return { ...prev, galleryImageUrls: nextLines.join("\n") };
-	      });
-	    } catch (err) {
-	      console.error(err);
-	      setError(
-	        "There was an issue processing gallery images. Try smaller files or upload again.",
-	      );
-	    }
-	  }
+    try {
+      setError(null);
+      const newUrls: string[] = [];
+      for (const file of Array.from(files)) {
+        const compressedDataUrl = await readAndCompressImageFile(file, {
+          maxWidth: 1600,
+          maxHeight: 900,
+          quality: 0.85,
+        });
+        newUrls.push(compressedDataUrl);
+      }
+
+      const existing = form.galleryImageUrls.trim();
+      const existingLines = existing ? existing.split("\n") : [];
+      const allUrls = [...existingLines, ...newUrls];
+
+      // Update local state
+      setForm((prev) => prev ? { ...prev, galleryImageUrls: allUrls.join("\n") } : prev);
+
+      // Save to database immediately
+      const res = await fetch(`/api/admin/packages/${packageId}`, {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ galleryImageUrls: allUrls }),
+      });
+
+      if (!res.ok) {
+        const data = (await res.json().catch(() => null)) as { error?: string } | null;
+        setError(data?.error ?? "Failed to save photos");
+      }
+    } catch (err) {
+      console.error(err);
+      setError(
+        "There was an issue processing gallery images. Try smaller files or upload again.",
+      );
+    }
+  }
 
   useEffect(() => {
     if (!packageId) return;
@@ -243,7 +249,6 @@ export default function AdminEditPackagePage() {
 	   		  currencyCode: pkg.currencyCode ?? "INR",
 	   		  shortDescription: pkg.shortDescription ?? "",
 	   		  detailedDescription: pkg.detailedDescription ?? "",
-	   		  heroImageUrl: pkg.heroImageUrl ?? "",
 	   		  galleryImageUrls: arrayToLines(pkg.galleryImageUrls),
 	   		  highlights: arrayToLines(pkg.highlights),
 	   		  inclusions: arrayToLines(pkg.inclusions),
@@ -281,6 +286,8 @@ export default function AdminEditPackagePage() {
 
 	    setSubmitting(true);
 
+	    const galleryImageUrls = linesToArray(form.galleryImageUrls);
+
 	    const payload: Record<string, unknown> = {
 	      slug: form.slug.trim(),
 	      title: form.title.trim(),
@@ -293,19 +300,17 @@ export default function AdminEditPackagePage() {
 	      currencyCode: form.currencyCode.trim() || "INR",
 	      shortDescription: form.shortDescription.trim(),
 	      detailedDescription: form.detailedDescription.trim() || undefined,
-	      heroImageUrl: form.heroImageUrl.trim(),
+	      galleryImageUrls,
 	      isFeatured: form.isFeatured,
 	      status: form.status,
 	    };
-	
+
 	    const highlights = linesToArray(form.highlights);
 	    if (highlights.length) payload.highlights = highlights;
 	    const inclusions = linesToArray(form.inclusions);
 	    if (inclusions.length) payload.inclusions = inclusions;
 	    const exclusions = linesToArray(form.exclusions);
 	    if (exclusions.length) payload.exclusions = exclusions;
-	    const galleryImageUrls = linesToArray(form.galleryImageUrls);
-	    if (galleryImageUrls.length) payload.galleryImageUrls = galleryImageUrls;
 
 	    const itinerary = form.itinerary
 	      .map((item, index) => ({
@@ -569,42 +574,8 @@ export default function AdminEditPackagePage() {
 		        </div>
 
 		        <div className="space-y-1">
-		          <label className="block text-xs font-medium text-slate-700">
-		            Hero image
-		          </label>
-		          <input
-		            type="file"
-		            accept="image/*"
-		            onChange={handleHeroImageFileChange}
-		            className="block w-full text-[11px] text-slate-700 file:mr-3 file:rounded-full file:border-0 file:bg-sky-600 file:px-3 file:py-1.5 file:text-[11px] file:font-semibold file:text-white file:shadow-sm hover:file:bg-sky-700"
-		          />
-		          <p className="text-[10px] text-slate-500">
-		            Upload a hero image here. This image will be displayed as the card background.
-		          </p>
-		          {form.heroImageUrl && (
-		            <div className="mt-2 flex items-center gap-2">
-		              <div className="h-16 w-28 overflow-hidden rounded-xl border border-slate-200 bg-slate-100">
-		                {/* eslint-disable-next-line @next/next/no-img-element */}
-		                <img
-		                  src={form.heroImageUrl}
-		                  alt="Hero preview"
-		                  className="h-full w-full object-cover"
-		                />
-		              </div>
-		              <button
-		                type="button"
-		                onClick={() => updateField("heroImageUrl", "")}
-		                className="text-[10px] text-slate-500 hover:text-red-600"
-		              >
-		                Clear
-		              </button>
-		            </div>
-		          )}
-		        </div>
-
-		        <div className="space-y-1">
-		          <label className="block text-xs font-medium text-slate-700">
-		            Trip photos (gallery images, optional)
+		          <label className="block text-xs font-medium text-slate-300">
+		            Trip photos
 		          </label>
 		          <input
 		            type="file"
@@ -612,12 +583,11 @@ export default function AdminEditPackagePage() {
 		            accept="image/*"
 		            onChange={handleGalleryImageFilesChange}
 		            ref={galleryInputRef}
-		            className="block w-full text-[11px] text-slate-700 file:mr-3 file:rounded-full file:border-0 file:bg-sky-600 file:px-3 file:py-1.5 file:text-[11px] file:font-semibold file:text-white file:shadow-sm hover:file:bg-sky-700"
+		            className="block w-full text-[11px] text-slate-400 file:mr-3 file:rounded-full file:border-0 file:bg-sky-600 file:px-3 file:py-1.5 file:text-[11px] file:font-semibold file:text-white file:shadow-sm hover:file:bg-sky-700"
 		          />
 		          <p className="text-[10px] text-slate-500">
-		            Images uploaded here will appear in the package page&apos;s &quot;Trip
-		            photos&quot; section. You can select multiple files at once.
-		            Recommended: 3-6 photos.
+		            Upload trip photos here. The <strong>first photo</strong> will be used as the package card background.
+		            You can select multiple files at once. Recommended: 3-6 photos.
 		          </p>
 		          {linesToArray(form.galleryImageUrls).length > 0 && (
 		            <>
@@ -625,11 +595,22 @@ export default function AdminEditPackagePage() {
 		                {linesToArray(form.galleryImageUrls).map((url, index) => (
 		                  <div
 		                    key={url}
-		                    className="relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-200 bg-slate-100"
+		                    className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-slate-600 bg-slate-700"
 		                  >
 		                    <span className="absolute left-1 top-1 rounded-full bg-black/60 px-2 py-0.5 text-[10px] font-medium text-slate-50">
 		                      Photo {index + 1}
 		                    </span>
+		                    {/* Delete button - always visible on mobile, hover on desktop */}
+		                    <button
+		                      type="button"
+		                      onClick={() => void handleDeleteGalleryPhoto(index)}
+		                      className="absolute right-1 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-red-500/90 text-white transition-opacity hover:bg-red-600 sm:opacity-0 sm:group-hover:opacity-100"
+		                      title="Delete photo"
+		                    >
+		                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+		                        <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+		                      </svg>
+		                    </button>
 		                    {/* eslint-disable-next-line @next/next/no-img-element */}
 		                    <img
 		                      src={url}
@@ -642,7 +623,7 @@ export default function AdminEditPackagePage() {
 		              <button
 		                type="button"
 		                onClick={() => galleryInputRef.current?.click()}
-		                className="mt-2 rounded-full border border-slate-500/70 px-3 py-1 text-[10px] font-medium text-slate-700 hover:bg-slate-100"
+		                className="mt-2 rounded-full border border-slate-500/70 px-3 py-1 text-[10px] font-medium text-slate-400 hover:bg-slate-700"
 		              >
 		                + Add more images
 		              </button>
@@ -689,35 +670,35 @@ export default function AdminEditPackagePage() {
 
         <div className="grid gap-4 sm:grid-cols-3">
           <div className="space-y-1">
-            <label className="block text-xs font-medium text-slate-700">
+            <label className="block text-xs font-medium text-slate-300">
               Highlights (one per line)
             </label>
             <textarea
               value={form.highlights}
               onChange={(event) => updateField("highlights", event.target.value)}
-              className="min-h-[80px] w-full rounded-lg border border-slate-200 px-3 py-2 text-xs text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+              className="min-h-[80px] w-full rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-xs text-white placeholder-slate-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
               placeholder="River-side cafe; Trek to viewpoint"
             />
           </div>
           <div className="space-y-1">
-            <label className="block text-xs font-medium text-slate-700">
+            <label className="block text-xs font-medium text-slate-300">
               Inclusions (one per line)
             </label>
             <textarea
               value={form.inclusions}
               onChange={(event) => updateField("inclusions", event.target.value)}
-              className="min-h-[80px] w-full rounded-lg border border-slate-200 px-3 py-2 text-xs text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+              className="min-h-[80px] w-full rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-xs text-white placeholder-slate-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
               placeholder="Hotel stay; Breakfast and dinner"
             />
           </div>
           <div className="space-y-1">
-            <label className="block text-xs font-medium text-slate-700">
+            <label className="block text-xs font-medium text-slate-300">
               Exclusions (one per line)
             </label>
             <textarea
               value={form.exclusions}
               onChange={(event) => updateField("exclusions", event.target.value)}
-              className="min-h-[80px] w-full rounded-lg border border-slate-200 px-3 py-2 text-xs text-slate-900 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+              className="min-h-[80px] w-full rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-xs text-white placeholder-slate-500 shadow-sm focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
               placeholder="Lunch; Personal expenses"
             />
           </div>

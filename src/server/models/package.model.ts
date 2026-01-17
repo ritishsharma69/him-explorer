@@ -23,7 +23,6 @@ export interface PackageDocument {
   inclusions: string[];
   exclusions: string[];
   itinerary: ItineraryItem[];
-  heroImageUrl: string;
   galleryImageUrls: string[];
   isFeatured: boolean;
   status: PackageStatus;
@@ -55,7 +54,6 @@ const PackageSchema = new Schema<PackageDocument>(
     inclusions: { type: [String], default: [] },
     exclusions: { type: [String], default: [] },
     itinerary: { type: [ItineraryItemSchema], default: [] },
-    heroImageUrl: { type: String, required: true, trim: true },
     galleryImageUrls: { type: [String], default: [] },
     isFeatured: { type: Boolean, default: false },
     status: {

@@ -11,15 +11,16 @@ interface RouteContext {
   params: Promise<{ id: string }>;
 }
 
+// Partial update schema - all fields optional for PATCH
 const updatePackageSchema = z.object({
-  slug: z.string().min(1),
-  title: z.string().min(1),
+  slug: z.string().min(1).optional(),
+  title: z.string().min(1).optional(),
   subtitle: z.string().optional(),
-  destinationName: z.string().min(1),
-  durationDays: z.number().int().min(1),
-  startingPricePerPerson: z.number().min(0),
-  currencyCode: z.string().min(3).max(3),
-  shortDescription: z.string().min(1),
+  destinationName: z.string().min(1).optional(),
+  durationDays: z.number().int().min(1).optional(),
+  startingPricePerPerson: z.number().min(0).optional(),
+  currencyCode: z.string().min(3).max(3).optional(),
+  shortDescription: z.string().min(1).optional(),
   detailedDescription: z.string().optional(),
   highlights: z.array(z.string()).optional(),
   inclusions: z.array(z.string()).optional(),
@@ -33,10 +34,9 @@ const updatePackageSchema = z.object({
       }),
     )
     .optional(),
-  heroImageUrl: z.string().url(),
-  galleryImageUrls: z.array(z.string().url()).optional(),
+  galleryImageUrls: z.array(z.string()).optional(),  // Allow data URLs
   isFeatured: z.boolean().optional(),
-  status: z.enum(["draft", "published", "archived"]),
+  status: z.enum(["draft", "published", "archived"]).optional(),
 });
 
 export async function GET(_request: NextRequest, context: RouteContext) {

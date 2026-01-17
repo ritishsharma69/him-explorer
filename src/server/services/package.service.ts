@@ -17,7 +17,6 @@ export interface CreatePackageInput {
   inclusions?: string[];
   exclusions?: string[];
   itinerary?: PackageDocument["itinerary"];
-  heroImageUrl: string;
   galleryImageUrls?: string[];
   isFeatured?: boolean;
   status?: PackageDocument["status"];

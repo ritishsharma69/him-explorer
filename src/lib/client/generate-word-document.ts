@@ -24,7 +24,7 @@ export interface PackageForWord {
 	inclusions: string[];
 	exclusions: string[];
 	itinerary: ItineraryItem[];
-	heroImageUrl?: string;
+	galleryImageUrls?: string[];
 }
 
 // Colors

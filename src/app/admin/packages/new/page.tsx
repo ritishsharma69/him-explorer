@@ -25,11 +25,6 @@ interface ItineraryFormItem {
 			currencyCode: string;
 			shortDescription: string;
 			detailedDescription: string;
-			// Hero image URL is still required by the backend, but on the "new" page
-			// we derive it automatically from the first trip photo instead of asking
-			// for a separate upload. Keeping it in the form state so the payload
-			// structure stays consistent.
-			heroImageUrl: string;
 			galleryImageUrls: string;
 			highlights: string;
 			inclusions: string;
@@ -86,7 +81,6 @@ export default function AdminNewPackagePage() {
 	    currencyCode: "INR",
 	    shortDescription: "",
 	    detailedDescription: "",
-		    heroImageUrl: "",
 	    galleryImageUrls: "",
 	    highlights: "",
 	    inclusions: "",
@@ -160,25 +154,24 @@ export default function AdminNewPackagePage() {
 		  async function handleSubmit(event: FormEvent) {
 			    event.preventDefault();
 			    setError(null);
-		
+
 			    const validationError = validatePackageForm(form);
 			    if (validationError) {
 			      setError(validationError);
 			      return;
 			    }
-		
-			    // Hero image now auto-derives from the first trip photo.
+
+			    // Check if at least one trip photo exists
 			    const galleryImageUrls = linesToArray(form.galleryImageUrls);
-			    const heroImageUrl = form.heroImageUrl.trim() || galleryImageUrls[0] || "";
-			    if (!heroImageUrl) {
+			    if (galleryImageUrls.length === 0) {
 			      setError(
-			        "Upload at least one trip photo. The first photo is used as the hero image (card background).",
+			        "Upload at least one trip photo. The first photo is used as the card background.",
 			      );
 			      return;
 			    }
-		
+
 			    setSubmitting(true);
-		  		
+
 			    		const payload: Record<string, unknown> = {
 			      slug: form.slug.trim(),
 			      title: form.title.trim(),
@@ -191,18 +184,17 @@ export default function AdminNewPackagePage() {
 			      currencyCode: form.currencyCode.trim() || "INR",
 			      shortDescription: form.shortDescription.trim(),
 			      detailedDescription: form.detailedDescription.trim() || undefined,
-			      heroImageUrl,
+			      galleryImageUrls,
 			      isFeatured: form.isFeatured,
 			      status: form.status,
 			    };
-		  		
+
 			    const highlights = linesToArray(form.highlights);
 			    if (highlights.length) payload.highlights = highlights;
 			    const inclusions = linesToArray(form.inclusions);
 			    if (inclusions.length) payload.inclusions = inclusions;
 			    const exclusions = linesToArray(form.exclusions);
 			    if (exclusions.length) payload.exclusions = exclusions;
-			    if (galleryImageUrls.length) payload.galleryImageUrls = galleryImageUrls;
 		
 			    const itinerary = form.itinerary
 			      .map((item, index) => ({

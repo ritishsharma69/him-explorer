@@ -363,7 +363,7 @@ export interface PackageForPdf {
 	inclusions: string[];
 	exclusions: string[];
 	itinerary: ItineraryItem[];
-	heroImageUrl?: string;
+	galleryImageUrls?: string[];
 }
 
 interface PackagePdfProps {

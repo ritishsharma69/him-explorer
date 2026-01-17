@@ -28,8 +28,7 @@ const createPackageSchema = z.object({
       }),
     )
     .optional(),
-  heroImageUrl: z.string().url(),
-  galleryImageUrls: z.array(z.string().url()).optional(),
+  galleryImageUrls: z.array(z.string()).optional(),
   isFeatured: z.boolean().optional(),
   status: z.enum(["draft", "published", "archived"]).optional(),
 });

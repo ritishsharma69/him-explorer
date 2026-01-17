@@ -60,8 +60,6 @@ const DEMO_PACKAGES_BY_SLUG: Record<string, PackageForPage> = {
           "Head out after breakfast for a flexible day trip towards Solang valley and, if weather allows, Atal Tunnel. Try basic snow activities, click photos and be back in Manali by evening for the bus back to Delhi.",
       },
     ],
-    heroImageUrl:
-      "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=80",
     galleryImageUrls: [
       "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80",
@@ -122,8 +120,6 @@ const DEMO_PACKAGES_BY_SLUG: Record<string, PackageForPage> = {
           "Wake up to pine views, take a short morning walk around the church / old cantonment area and head back to Chandigarh after an early lunch.",
       },
     ],
-    heroImageUrl:
-      "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=1200&q=80",
     galleryImageUrls: [
       "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1548940740-204726a19be3?auto=format&fit=crop&w=900&q=80",
@@ -190,8 +186,6 @@ const DEMO_PACKAGES_BY_SLUG: Record<string, PackageForPage> = {
           "Use the weekend for a slightly longer hike or a GHNP entry day with a local guide. Last day kept light for rest and packing.",
       },
     ],
-    heroImageUrl:
-      "https://images.unsplash.com/photo-1500534314211-0a24cd03f2c0?auto=format&fit=crop&w=1200&q=80",
     galleryImageUrls: [
       "https://images.unsplash.com/photo-1500534314211-0a24cd03f2c0?auto=format&fit=crop&w=900&q=80",
       "https://images.unsplash.com/photo-1526481280695-3c687fd543c0?auto=format&fit=crop&w=900&q=80",
