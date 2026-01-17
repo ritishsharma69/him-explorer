@@ -12,6 +12,7 @@ const ADMIN_NAV_ITEMS = [
 	{ href: "/admin/packages", label: "Packages" },
 	{ href: "/admin/home-collections", label: "Home collections" },
 	{ href: "/admin/partner-hotels", label: "Partner hotels" },
+	{ href: "/admin/popular-destinations", label: "Destinations" },
 	{ href: "/admin/enquiries", label: "Enquiries" },
 	{ href: "/admin/reviews", label: "Reviews" },
 	{ href: "/admin/adventure-activities", label: "Adventure activities" },
