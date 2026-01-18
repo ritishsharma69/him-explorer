@@ -79,7 +79,7 @@ export function SiteFooter() {
 					<p className="flex flex-wrap items-center gap-1 sm:gap-2">
 						<span>Website made by</span>
 						<a
-							href="https://instagram.com/ritishsharma"
+							href="https://portfolio-app-frontend.onrender.com/contact"
 							target="_blank"
 							rel="noreferrer"
 							className="font-medium text-blue-300 hover:text-blue-200"
