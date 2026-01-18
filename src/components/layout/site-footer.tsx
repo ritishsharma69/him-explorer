@@ -87,7 +87,12 @@ export function SiteFooter() {
 							Ritish Sharma
 						</a>
 						<span className="hidden sm:inline">·</span>
-						<a href="/contact" className="underline-offset-2 hover:underline">
+						<a
+							href="https://portfolio-app-frontend.onrender.com/contact"
+							target="_blank"
+							rel="noreferrer"
+							className="underline-offset-2 hover:underline"
+						>
 							Contact
 						</a>
 					</p>
