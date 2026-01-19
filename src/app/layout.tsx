@@ -18,9 +18,9 @@ const geistSans = Geist({
 	});
 
 	export const metadata: Metadata = {
-	  title: "HimExplore | Himachal tour packages & custom trips",
+	  title: "HimExplore | India tour packages & custom trips",
 	  description:
-	    "Curated Himachal Pradesh tour packages, weekend getaways and custom trips planned by local experts.",
+	    "Curated India tour packages, weekend getaways and custom trips planned by local experts.",
 	};
 
 		export default function RootLayout({

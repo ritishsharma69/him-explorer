@@ -86,9 +86,9 @@ export default function AdminPopularDestinationsPage() {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    const maxSizeMb = 15;
+    const maxSizeMb = 1;
     if (file.size > maxSizeMb * 1024 * 1024) {
-      setError(`Image must be less than ${maxSizeMb}MB`);
+      setError(`Image must be less than ${maxSizeMb}MB. Please compress and upload again.`);
       return;
     }
 

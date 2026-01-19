@@ -28,20 +28,20 @@ export function SiteFooter() {
 				<Container className="grid gap-8 py-8 text-[11px] sm:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)_minmax(0,1fr)] sm:text-xs">
 					<div className="space-y-3">
 						<p className="inline-flex items-center rounded-full bg-slate-900 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-blue-300">
-							HimExplore · Himachal trips
+							HimExplore · Travel experiences
 						</p>
 						<p className="max-w-md text-slate-200/90">
-							Local-first travel studio helping small groups plan relaxed, scenic itineraries across Himachal instead of rushed checklists.
+							Local-first travel studio helping small groups plan relaxed, scenic itineraries across India instead of rushed checklists.
 						</p>
 						<div className="flex items-center gap-3 pt-1">
 							{/* eslint-disable-next-line @next/next/no-img-element */}
 							<img
 								src="/himachal-tourism.png"
-								alt="Himachal Tourism"
+								alt="Tourism Partner"
 								className="h-10 w-auto object-contain"
 							/>
 							<span className="text-sm font-medium text-slate-300">
-								Trusted by Himachal Tourism
+								Trusted tourism partner
 							</span>
 						</div>
 					</div>
@@ -51,7 +51,7 @@ export function SiteFooter() {
 							Trip planning
 						</h3>
 						<ul className="space-y-1 text-slate-200/80">
-							<li>Custom Himachal itineraries</li>
+							<li>Custom travel itineraries</li>
 							<li>Homestay &amp; hotel shortlists</li>
 							<li>Cab + stay packages</li>
 							<li>Workation &amp; slow travel plans</li>

@@ -5,7 +5,7 @@ import { Container } from "@/components/layout/container";
 export const metadata: Metadata = {
   title: "About us | HimExplore",
   description:
-    "HimExplore is a small team of Himachal-based planners crafting slow, scenic trips in the mountains.",
+    "HimExplore is a small team of travel planners crafting slow, scenic trips across India.",
 };
 
 export default function AboutPage() {
@@ -21,7 +21,7 @@ export default function AboutPage() {
           </h1>
           <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
             HimExplore started as a side project helping friends plan their first
-            Himachal trips. Today, we are a small local-first team that spends
+            trips. Today, we are a small local-first team that spends
             more time on the road than behind deskschecking new stays,
             drives and cafes so your trip feels slow, scenic and sorted.
           </p>
@@ -39,7 +39,7 @@ export default function AboutPage() {
               Local-first
             </h2>
             <p className="text-xs text-slate-600">
-              We work directly with homestays and small hotels across Himachal,
+              We work directly with homestays and small hotels across India,
               so your money supports local families and not just large chains.
             </p>
           </div>

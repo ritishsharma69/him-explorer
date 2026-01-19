@@ -164,11 +164,11 @@ export default function AdminEditPackagePage() {
     const files = event.target.files;
     if (!files || files.length === 0) return;
 
-    const maxSizeMb = 15;
+    const maxSizeMb = 1;
     for (const file of Array.from(files)) {
       if (file.size > maxSizeMb * 1024 * 1024) {
         setError(
-          `Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
+          `Image size must be less than ${maxSizeMb}MB. Please compress and upload again.`,
         );
         return;
       }

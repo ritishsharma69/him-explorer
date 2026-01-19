@@ -77,7 +77,8 @@ export function HeroSection() {
 									muted
 									loop
 									playsInline
-									preload="auto"
+									preload="metadata"
+									poster="/harcode-image.png"
 									aria-hidden="true"
 								>
 									<source src="/home1.mp4" type="video/mp4" />
@@ -90,7 +91,7 @@ export function HeroSection() {
 						className="space-y-6 md:space-y-7"
 					>
 						<p className="inline-flex items-center rounded-full bg-blue-50/95 px-4 py-1.5 text-[11px] sm:text-[12px] font-semibold uppercase tracking-[0.25em] text-blue-900 shadow-sm shadow-blue-300/80 ring-1 ring-blue-300">
-						Himachal getaways, handcrafted
+						Indian getaways, handcrafted
 					</p>
 					<h1 className="text-balance text-3xl font-bold leading-tight tracking-tight sm:text-4xl md:text-5xl">
 							<span className="block text-slate-900 drop-shadow-md">
@@ -114,7 +115,7 @@ export function HeroSection() {
 									size="lg"
 									className="rounded-full bg-blue-600 px-7 py-2.5 text-sm sm:text-base font-semibold text-white shadow-[0_18px_45px_rgba(37,99,235,0.65)] hover:bg-blue-500 hover:shadow-[0_22px_60px_rgba(37,99,235,0.85)]"
 								>
-									Browse Himachal packages
+									Browse travel packages
 								</Button>
 							</Link>
 							<a
@@ -138,7 +139,7 @@ export function HeroSection() {
 										Live like a local
 									</p>
 										<p className="text-[11px] sm:text-[12px] text-slate-500">
-									Trips planned 1:1 over WhatsApp with a Himachal-based expert.
+									Trips planned 1:1 over WhatsApp with local travel experts.
 								</p>
 										</div>
 								</div>

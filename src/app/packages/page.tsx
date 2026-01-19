@@ -109,7 +109,7 @@ export default async function PackagesPage() {
 					<section className="border-y border-sky-100 bg-gradient-to-r from-sky-50 via-sky-100/60 to-blue-50 py-6">
 						<Container className="space-y-4">
 							<p className="inline-flex items-center rounded-full bg-white/80 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700 shadow-sm shadow-sky-200">
-								Himachal tour packages
+								India tour packages
 							</p>
 							<h1 className="text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl md:text-4xl">
 								Pick a starting point, then customise it with your planner.
@@ -138,7 +138,7 @@ export default async function PackagesPage() {
 						{!hasPackages && (
 							<p className="text-xs text-slate-500 sm:text-sm">
 								No packages are live yet. These are sample itineraries to show you
-								the style of trips we plan in Himachal.
+								the style of trips we plan across India.
 							</p>
 						)}
 						<div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

@@ -14,7 +14,7 @@ const ADVENTURE_SPORTS: AdventureSportCard[] = [
 		id: "river-rafting",
 		name: "River rafting",
 		label:
-			"Guided runs on popular Himachal stretches with proper life-jackets, helmets and rescue kayaks.",
+			"Guided runs on popular river stretches with proper life-jackets, helmets and rescue kayaks.",
 	},
 	{
 		id: "paragliding",

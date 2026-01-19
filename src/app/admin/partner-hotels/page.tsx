@@ -187,10 +187,10 @@ export default function AdminPartnerHotelsPage() {
 				const file = event.target.files?.[0];
 				if (!file) return;
 
-				const maxSizeMb = 15;
+				const maxSizeMb = 1;
 				if (file.size > maxSizeMb * 1024 * 1024) {
 					setError(
-						`Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
+						`Image size must be less than ${maxSizeMb}MB. Please compress and upload again.`,
 					);
 					return;
 				}

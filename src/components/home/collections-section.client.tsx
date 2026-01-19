@@ -84,6 +84,8 @@ function CollectionsRow({ heading, description, items, onCardClick, showArrows =
                 src={item.imageUrl || "/harcode-image.png"}
                 alt={item.title}
                 className="h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <span className="absolute left-3 top-3 inline-flex items-center rounded-full bg-blue-600 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.18em] text-white shadow-sm shadow-blue-500/40">
                 {item.badge}
@@ -115,14 +117,14 @@ export function CollectionsSectionClient({ primaryItems, offbeatItems }: Collect
         <Container>
           <ScrollReveal className="space-y-8 rounded-3xl bg-white px-4 py-5 shadow-[0_18px_60px_rgba(15,23,42,0.12)] ring-1 ring-slate-100 sm:px-6 sm:py-6">
             <CollectionsRow
-              heading="Top 10 Himachal collections for you"
+              heading="Top 10 travel collections for you"
               description="Ready-made ideas for weekend getaways, workations and short breaks you can further customise over a quick call."
               items={primaryItems}
               onCardClick={handleCardClick}
               showArrows
             />
             <CollectionsRow
-              heading="Unlock lesser-known wonders of Himachal"
+              heading="Unlock lesser-known wonders of India"
               description="Offbeat spots, quieter towns and slow-travel bases that stay within easy driving distance of major cities."
               items={offbeatItems}
               onCardClick={handleCardClick}

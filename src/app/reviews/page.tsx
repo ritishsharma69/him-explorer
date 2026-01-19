@@ -90,7 +90,7 @@ export default async function ReviewsPage() {
 						Guest stories
 					</p>
 					<h1 className="text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl md:text-4xl">
-						Honest reviews from recent Himachal trips.
+						Honest reviews from recent trips.
 					</h1>
 					<p className="max-w-2xl text-xs text-slate-600 sm:text-sm">
 						Every trip is planned 1:1 over calls and WhatsApp, so these reviews talk

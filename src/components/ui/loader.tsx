@@ -2,7 +2,7 @@ import { Container } from "@/components/layout/container";
 
 export function FullPageLoader() {
 	return (
-		<div className="flex min-h-screen items-center justify-center bg-slate-950/90">
+		<div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950">
 			<Container>
 				<div className="flex flex-col items-center justify-center gap-4 text-center text-slate-100">
 					<div className="flex items-center gap-2">

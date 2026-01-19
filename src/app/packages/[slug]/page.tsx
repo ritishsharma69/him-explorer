@@ -232,7 +232,7 @@ export default async function PackageDetailPage({ params }: PageProps) {
             {/* Hero / basic info */}
             <div className="space-y-4">
               <p className="inline-flex items-center rounded-full bg-sky-100 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.18em] text-sky-700">
-                Himachal itinerary
+                Travel itinerary
               </p>
               <h1 className="text-balance text-2xl font-semibold tracking-tight text-slate-900 sm:text-3xl md:text-4xl">
                 {pkg.title}

@@ -207,10 +207,10 @@ export default function AdminHomeCollectionsPage() {
 				const file = event.target.files?.[0];
 				if (!file) return;
 
-				const maxSizeMb = 15;
+				const maxSizeMb = 1;
 				if (file.size > maxSizeMb * 1024 * 1024) {
 					setError(
-						`Image size must be less than ${maxSizeMb}MB, otherwise upload will be very slow.`,
+						`Image size must be less than ${maxSizeMb}MB. Please compress and upload again.`,
 					);
 					return;
 				}
@@ -290,8 +290,8 @@ export default function AdminHomeCollectionsPage() {
 	        </div>
 	        <p className="max-w-xs text-[10px] text-slate-400">
 	          {activeCategory === "top"
-	            ? "These cards appear in the \"Top 10 Himachal collections\" row on the home page."
-	            : "These cards appear in the \"Unlock lesser-known wonders of Himachal\" row on the home page."}
+	            ? "These cards appear in the \"Top 10 travel collections\" row on the home page."
+	            : "These cards appear in the \"Unlock lesser-known wonders of India\" row on the home page."}
 	        </p>
 	      </div>
 
@@ -308,8 +308,8 @@ export default function AdminHomeCollectionsPage() {
 	            </label>
 	            <p className="rounded-lg border border-slate-700/60 bg-slate-900/60 px-2 py-1 text-[11px] text-slate-100">
 	              {activeCategory === "top"
-	                ? "Top 10 Himachal collections row"
-	                : "Unlock lesser-known Himachal row"}
+	                ? "Top 10 travel collections row"
+	                : "Unlock lesser-known India row"}
 	            </p>
 	            <p className="text-[10px] text-slate-400">
 	              Cards added here will only appear in this row.

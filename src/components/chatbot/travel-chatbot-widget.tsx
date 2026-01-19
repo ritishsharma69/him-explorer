@@ -18,9 +18,9 @@ interface Message {
 }
 
 	const QUICK_QUESTIONS: string[] = [
-		"I want to plan a Himachal trip.",
-		"I want to know your Himachal packages.",
-		"Suggest the best Himachal package for my budget and dates.",
+		"I want to plan a trip.",
+		"I want to know your travel packages.",
+		"Suggest the best package for my budget and dates.",
 	];
 
 // Generate unique session ID for each user
@@ -41,7 +41,7 @@ function generateSessionId(): string {
 		      id: 1,
 		      sender: "bot",
 			      text:
-			        "Welcome to HimExplore! I'm your Himachal trip planner buddy. Tell me where you're travelling from, when you'd like to go, and your rough budget.",
+			        "Welcome to HimExplore! I'm your trip planner buddy. Tell me where you're travelling from, when you'd like to go, and your rough budget.",
 		    },
 		  ]);
 		  const [input, setInput] = useState("");
@@ -247,7 +247,7 @@ function generateSessionId(): string {
 		          <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white/10 text-[13px]">
 		            <FontAwesomeIcon icon={faPlaneDeparture} />
 		          </span>
-		          <span>Plan a Himachal trip</span>
+		          <span>Plan your trip</span>
 		        </button>
       )}
 
@@ -339,7 +339,7 @@ function generateSessionId(): string {
               <input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask anything about Himachal trips"
+                placeholder="Ask anything about your trip"
 	                className="h-8 flex-1 bg-transparent text-[12px] sm:text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none"
               />
 				          <button

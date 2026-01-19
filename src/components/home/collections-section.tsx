@@ -43,7 +43,7 @@ const PRIMARY_COLLECTIONS: CollectionItem[] = [
 	{
 		id: "beach-destinations",
 			badge: "TOP 10",
-		title: "Beach destinations you can pair with Himachal trips",
+		title: "Beach destinations you can pair with mountain trips",
 		subtitle: "Plan a cool hills + warm beach combo break.",
 	},
 	{
@@ -71,10 +71,10 @@ const PRIMARY_COLLECTIONS: CollectionItem[] = [
 			subtitle: "Trips where you\'re likely to see snow without long treks.",
 		},
 		{
-			id: "first-time-himachal",
+			id: "first-time-mountains",
 			badge: "TOP 10",
-			title: "First-time Himachal itineraries",
-			subtitle: "Classic Manali, Shimla & Dharamshala combinations.",
+			title: "First-time mountain itineraries",
+			subtitle: "Classic hill station combinations for beginners.",
 		},
 		{
 			id: "friends-group-trips",
@@ -124,7 +124,7 @@ const OFFBEAT_COLLECTIONS: CollectionItem[] = [
 		{
 			id: "quiet-villages",
 			badge: "SLOW",
-			title: "Slow stays in quiet Himachal villages",
+			title: "Slow stays in quiet Indian villages",
 			subtitle: "Live like a local with long balconies and chai breaks.",
 		},
 		{

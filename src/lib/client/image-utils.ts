@@ -2,18 +2,27 @@ export interface ImageCompressionOptions {
   maxWidth?: number;
   maxHeight?: number;
   quality?: number;
+  /** Force compression even if image is within bounds */
+  forceCompress?: boolean;
+  /** Target file size in KB (will reduce quality to achieve) */
+  targetSizeKB?: number;
 }
 
 /**
- * Read an image File into a data URL and, if it is larger than the target
- * dimensions, downscale it into a JPEG data URL. Intended for use in
- * client-side admin forms before persisting imageUrl strings.
+ * Read an image File into a data URL and compress it to JPEG/WebP.
+ * ALWAYS compresses to reduce file size for faster loading.
  */
 export async function readAndCompressImageFile(
   file: File,
   options?: ImageCompressionOptions,
 ): Promise<string> {
-  const { maxWidth = 1280, maxHeight = 720, quality = 0.8 } = options ?? {};
+  const {
+    maxWidth = 1280,
+    maxHeight = 720,
+    quality = 0.7, // Reduced default quality for smaller files
+    forceCompress = true, // Always compress by default
+    targetSizeKB = 300 // Target ~300KB per image
+  } = options ?? {};
 
   const originalDataUrl = await new Promise<string>((resolve, reject) => {
     const reader = new FileReader();
@@ -51,11 +60,7 @@ export async function readAndCompressImageFile(
 
   const scale = Math.min(maxWidth / width, maxHeight / height, 1);
 
-  // If the image is already within bounds, don't touch it.
-  if (scale >= 1) {
-    return originalDataUrl;
-  }
-
+  // ALWAYS compress - even if within bounds (removes metadata, reduces quality)
   const targetWidth = Math.round(width * scale);
   const targetHeight = Math.round(height * scale);
 
@@ -69,10 +74,39 @@ export async function readAndCompressImageFile(
     return originalDataUrl;
   }
 
+  // Enable image smoothing for better quality when scaling
+  context.imageSmoothingEnabled = true;
+  context.imageSmoothingQuality = "high";
+
   context.drawImage(image, 0, 0, targetWidth, targetHeight);
 
-  const safeQuality = quality > 0 && quality <= 1 ? quality : 0.8;
+  // Try WebP first (smaller), fallback to JPEG
+  let compressedDataUrl: string;
+  let currentQuality = quality > 0 && quality <= 1 ? quality : 0.7;
 
-  return canvas.toDataURL("image/jpeg", safeQuality);
+  // Try to achieve target file size by reducing quality iteratively
+  const maxAttempts = 5;
+  for (let attempt = 0; attempt < maxAttempts; attempt++) {
+    // Try WebP format (30-50% smaller than JPEG)
+    compressedDataUrl = canvas.toDataURL("image/webp", currentQuality);
+
+    // If WebP not supported, fallback to JPEG
+    if (compressedDataUrl.startsWith("data:image/webp") === false) {
+      compressedDataUrl = canvas.toDataURL("image/jpeg", currentQuality);
+    }
+
+    // Estimate file size from base64 (base64 is ~33% larger than binary)
+    const estimatedSizeKB = (compressedDataUrl.length * 0.75) / 1024;
+
+    // If within target or quality too low, stop
+    if (estimatedSizeKB <= targetSizeKB || currentQuality <= 0.4) {
+      break;
+    }
+
+    // Reduce quality for next attempt
+    currentQuality -= 0.1;
+  }
+
+  return compressedDataUrl!;
 }
 

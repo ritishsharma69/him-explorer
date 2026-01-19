@@ -6,7 +6,7 @@ import { EnquiryForm } from "@/components/enquiry/enquiry-form";
 export const metadata: Metadata = {
   title: "Contact us | HimExplore",
   description:
-    "Share your dates, rough budget and what kind of Himachal trip you want. A local planner will get back on WhatsApp.",
+    "Share your dates, rough budget and what kind of trip you want. A local planner will get back on WhatsApp.",
 };
 
 export default function ContactPage() {
@@ -18,7 +18,7 @@ export default function ContactPage() {
             Contact & enquiry
           </p>
           <h1 className="text-balance text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl">
-            Tell us about the Himachal trip you have in mind.
+            Tell us about the trip you have in mind.
           </h1>
           <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
             Share your dates, number of travellers and what vibe you are going

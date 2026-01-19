@@ -94,6 +94,8 @@ export async function PopularDestinationsSection() {
                     src={dest.imageUrl}
                     alt={dest.name}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                    decoding="async"
                   />
                   {/* Gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />

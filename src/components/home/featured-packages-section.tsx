@@ -159,7 +159,7 @@ export function FeaturedPackagesSection({
 				<div className="flex flex-col items-start justify-between gap-3 sm:flex-row sm:items-end">
 					<div>
 							<h2 className="text-lg font-semibold text-slate-900 sm:text-xl">
-							Popular Himachal itineraries
+							Popular travel itineraries
 						</h2>
 							<p className="mt-1 text-xs text-slate-600 sm:text-sm">
 							Handpicked trips that work well for first-time and repeat visitors.
@@ -196,6 +196,9 @@ export function FeaturedPackagesSection({
 											fill
 											className="object-cover transition-transform duration-700 group-hover:scale-105"
 											sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+											loading="lazy"
+											placeholder="blur"
+											blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAMCAgMCAgMDAwMEAwMEBQgFBQQEBQoHBwYIDAoMCwsLCgwMDBANDw4RDgwMEhMSExoLEBgYGB4YHiIeIh4cHBz/2wBDAQMEBAUEBQkFBQkcEQwRHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBwcHBz/wAARCAAIAAoDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAcI/8QAIhAAAgEEAgIDAQAAAAAAAAAAAQIDBAUGBxEhCBITMUFR/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAH/xAAXEQEBAQEAAAAAAAAAAAAAAAAAASEx/9oADAMBAAIRAxEAPwDQ2x9xYnb9D2HScGxMcymixu33q6W+43GpuDXCSooZpIIZPjqJPsqopHqzruW1yV0jAMOAPH9AAK1f/9k="
 										/>
 										{/* Gradient Overlay - stronger at bottom */}
 										<div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />
@@ -243,7 +246,7 @@ export function FeaturedPackagesSection({
 													{/* Avatar images - unique per package */}
 													<div className="flex -space-x-2">
 														{stats.avatars.map((avatarUrl, i) => (
-															<Image key={i} src={avatarUrl} alt="" width={28} height={28} className="rounded-full ring-2 ring-slate-800 object-cover" />
+															<Image key={i} src={avatarUrl} alt="" width={28} height={28} className="rounded-full ring-2 ring-slate-800 object-cover" loading="lazy" />
 														))}
 													</div>
 													{/* Rating - unique per package */}

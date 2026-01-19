@@ -29,7 +29,7 @@ const FALLBACK_PARTNER_HOTELS: PartnerHotelCard[] = [
 	  {
 			id: "majestic",
 			name: "Majestic Hotels",
-			label: "Premium Himachal stays",
+			label: "Premium mountain stays",
 		},
 ];
 

@@ -62,7 +62,7 @@ export function PartnerHotelsSectionClient({ hotels }: PartnerHotelsSectionClien
                 </div>
               </div>
               <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">
-                Hotel &amp; resort partners across Himachal
+                Hotel &amp; resort partners across India
               </h2>
               <p className="text-xs text-slate-600 sm:text-sm">
                 From boutique homestays to bigger brands, we mix and match stays so your trip feels cosy, not cookie-cutter.
@@ -85,6 +85,8 @@ export function PartnerHotelsSectionClient({ hotels }: PartnerHotelsSectionClien
                       src={hotel.imageUrl || "/harcode-image.png"}
                       alt={hotel.name}
                       className="h-full w-full object-cover"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div className="flex flex-1 flex-col gap-1 px-3 py-2">
@@ -117,6 +119,8 @@ export function PartnerHotelsSectionClient({ hotels }: PartnerHotelsSectionClien
                   src={active.hotel.imageUrl || "/harcode-image.png"}
                   alt={active.hotel.name}
                   className="h-full w-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="space-y-1 px-3 pb-3 pt-2">

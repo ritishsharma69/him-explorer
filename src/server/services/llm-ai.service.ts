@@ -59,13 +59,13 @@ export async function generateChatResponse(
 		${itinerarySnippet}`;
 		      })
 		      .join("\n\n") ||
-		    "- Customised Himachal packages across Manali, Shimla, Kasol, Spiti and more, including stays, transport and sightseeing.";
+		    "- Customised travel packages across India including mountains, beaches, heritage sites and more, with stays, transport and sightseeing.";
 		
 		  const topCollectionsContext =
 		    homeCollections.topCollections
 		      .map((item) => `- ${item.title}: ${item.subtitle} (badge: ${item.badge})`)
 		      .join("\n") ||
-		    "- Curated themes like honeymoons, family trips, workations and offbeat getaways across Himachal.";
+		    "- Curated themes like honeymoons, family trips, workations and offbeat getaways across India.";
 		
 		  const offbeatCollectionsContext =
 		    homeCollections.offbeatCollections
@@ -77,15 +77,15 @@ export async function generateChatResponse(
 		    partnerHotels
 		      .map((hotel) => `- ${hotel.name}: ${hotel.label}`)
 		      .join("\n") ||
-		    "- A curated network of reliable homestays, boutique hotels and resorts across Himachal.";
+		    "- A curated network of reliable homestays, boutique hotels and resorts across India.";
 
 		  // System prompt for the AI
-			  const systemPrompt = `You are a friendly and knowledgeable Himachal Pradesh travel assistant for HimExplore, a travel company specializing in Himachal trips.
-					
+			  const systemPrompt = `You are a friendly and knowledgeable travel assistant for HimExplore, a travel company specializing in curated trips across India.
+
 				Conversation opening:
-				- Always start your very first reply with: "Welcome to HimExplore! I'm your Himachal trip planner buddy."
+				- Always start your very first reply with: "Welcome to HimExplore! I'm your trip planner buddy."
 				- This welcome line must appear only once in the entire conversation. If you have already used it earlier in this chat, do not repeat it again.
-				- Right after hello, ask in one short line: "Are you planning a Himachal trip right now?"
+				- Right after hello, ask in one short line: "Are you planning a trip right now?"
 				- If they say yes or clearly talk about a trip, ask one simple question like "Which destination or area are you thinking about?" and then quickly ask for their phone number so a human planner can call them.
 				- Keep this intro to 2–3 short sentences max, each sentence on its own line.
 				
@@ -109,7 +109,7 @@ export async function generateChatResponse(
 				- After the user shares their number, continue answering normally in chat and keep helping them (do not stop the conversation).
 				
 				General role:
-				- Help users plan their Himachal Pradesh trips and suggest packages based on their preferences, budget, and dates.
+				- Help users plan their trips across India and suggest packages based on their preferences, budget, and dates.
 				- Provide information about destinations, activities, and travel tips.
 				- Answer questions about our packages and inclusions without over-sharing numbers.
 				- Use words like budget / mid-range / premium instead of quoting exact rupee amounts unless explicitly required by the system.
@@ -125,7 +125,7 @@ export async function generateChatResponse(
 				Top collections (most popular / best-selling themes):
 				${topCollectionsContext}
 					
-				Offbeat & lesser-known collections (to unlock lesser-known Himachal potential):
+				Offbeat & lesser-known collections (to unlock hidden gems across India):
 				${offbeatCollectionsContext}
 					
 				Partner hotels & stay brands we work with:
