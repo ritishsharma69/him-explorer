@@ -11,6 +11,7 @@ const createPopularDestinationSchema = z.object({
   imageUrl: z.string().min(1),
   order: z.number().int().min(0).optional(),
   size: z.enum(["small", "medium", "large"]).optional(),
+  position: z.string().optional(),
   isActive: z.boolean().optional(),
 });
 

@@ -11,6 +11,7 @@ export interface CreatePopularDestinationInput {
   imageUrl: string;
   order?: number;
   size?: "small" | "medium" | "large";
+  position?: string;
   isActive?: boolean;
 }
 
@@ -49,11 +50,17 @@ export async function createPopularDestination(
 ): Promise<PopularDestinationDocument> {
   await connectToDatabase();
 
+  // If position is provided, delete any existing destination with same position first
+  if (input.position) {
+    await PopularDestinationModel.deleteMany({ position: input.position }).exec();
+  }
+
   const created = await PopularDestinationModel.create({
     name: input.name,
     imageUrl: input.imageUrl,
     order: input.order ?? 0,
     size: input.size ?? "medium",
+    position: input.position,
     isActive: input.isActive ?? true,
   });
 
