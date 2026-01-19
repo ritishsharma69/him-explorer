@@ -15,10 +15,11 @@ import {
 	CollectionsSectionSkeleton,
 } from "@/components/home/collections-section";
 import { AdventureSportsSection } from "@/components/home/adventure-sports-section";
-import {
-	PopularDestinationsSection,
-	PopularDestinationsSectionSkeleton,
-} from "@/components/home/popular-destinations-section";
+// Popular Destinations temporarily disabled
+// import {
+// 	PopularDestinationsSection,
+// 	PopularDestinationsSectionSkeleton,
+// } from "@/components/home/popular-destinations-section";
 import {
 	PartnerHotelsSection,
 	PartnerHotelsSectionSkeleton,
@@ -30,9 +31,11 @@ import { ContactSection } from "@/components/home/contact-section";
 		<div className="relative bg-slate-50/40">
 			<div className="relative space-y-10">
 				<HeroSection />
+				{/* Popular Destinations temporarily disabled
 				<Suspense fallback={<PopularDestinationsSectionSkeleton />}>
 					<PopularDestinationsSection />
 				</Suspense>
+				*/}
 				<Suspense fallback={<CollectionsSectionSkeleton />}>
 					<CollectionsSection />
 				</Suspense>
