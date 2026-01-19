@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 import { Container } from "@/components/layout/container";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
@@ -17,6 +19,7 @@ interface CollectionsRowProps {
   description: string;
   items: CollectionItem[];
   onCardClick: (item: CollectionItem, heading: string, description: string) => void;
+  showArrows?: boolean;
 }
 
 interface ActiveCollectionCard {
@@ -25,14 +28,50 @@ interface ActiveCollectionCard {
   description: string;
 }
 
-function CollectionsRow({ heading, description, items, onCardClick }: CollectionsRowProps) {
+function CollectionsRow({ heading, description, items, onCardClick, showArrows = false }: CollectionsRowProps) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const scrollAmount = 280; // Approx card width + gap
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <div className="space-y-3">
-      <div>
-        <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">{heading}</h2>
-        <p className="mt-1 text-xs text-slate-600 sm:text-sm">{description}</p>
+      <div className="flex items-center justify-between gap-4">
+        <div>
+          <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">{heading}</h2>
+          <p className="mt-1 text-xs text-slate-600 sm:text-sm">{description}</p>
+        </div>
+        {showArrows && (
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => scroll("left")}
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-600 shadow-sm transition hover:bg-slate-200 hover:text-slate-900"
+              aria-label="Scroll left"
+            >
+              <FontAwesomeIcon icon={faChevronLeft} className="text-xs" />
+            </button>
+            <button
+              type="button"
+              onClick={() => scroll("right")}
+              className="flex h-8 w-8 items-center justify-center rounded-full bg-slate-100 text-slate-600 shadow-sm transition hover:bg-slate-200 hover:text-slate-900"
+              aria-label="Scroll right"
+            >
+              <FontAwesomeIcon icon={faChevronRight} className="text-xs" />
+            </button>
+          </div>
+        )}
       </div>
-      <div className="flex gap-4 overflow-x-auto px-2 pb-2 pt-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div
+        ref={scrollRef}
+        className="flex gap-4 overflow-x-auto px-2 pb-2 pt-2 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+      >
         {items.map((item) => (
           <article
             key={item.id}
@@ -86,6 +125,7 @@ export function CollectionsSectionClient({ primaryItems, offbeatItems }: Collect
               description="Offbeat spots, quieter towns and slow-travel bases that stay within easy driving distance of major cities."
               items={offbeatItems}
               onCardClick={handleCardClick}
+              showArrows
             />
           </ScrollReveal>
         </Container>
