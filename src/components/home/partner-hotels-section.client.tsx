@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronLeft, faChevronRight } from "@fortawesome/free-solid-svg-icons";
 
 import { Container } from "@/components/layout/container";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
@@ -17,8 +19,18 @@ interface ActiveHotelCard {
 
 export function PartnerHotelsSectionClient({ hotels }: PartnerHotelsSectionClientProps) {
   const [active, setActive] = useState<ActiveHotelCard | null>(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
 
   const closeModal = () => setActive(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (!scrollRef.current) return;
+    const scrollAmount = 220;
+    scrollRef.current.scrollBy({
+      left: direction === "left" ? -scrollAmount : scrollAmount,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
@@ -26,9 +38,29 @@ export function PartnerHotelsSectionClient({ hotels }: PartnerHotelsSectionClien
         <Container>
           <ScrollReveal className="flex flex-col gap-4 rounded-3xl bg-white/85 px-4 py-5 shadow-[0_18px_60px_rgba(15,23,42,0.12)] ring-1 ring-slate-100/90 backdrop-blur-xl sm:flex-row sm:items-center sm:justify-between sm:px-6 sm:py-6">
             <div className="max-w-xs space-y-2">
-              <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700">
-                Flagship stays we love booking
-              </p>
+              <div className="flex items-center justify-between gap-2">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-blue-700">
+                  Flagship stays we love booking
+                </p>
+                <div className="flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => scroll("left")}
+                    className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-100 text-slate-600 shadow-sm transition hover:bg-slate-200 hover:text-slate-900"
+                    aria-label="Scroll left"
+                  >
+                    <FontAwesomeIcon icon={faChevronLeft} className="text-[10px]" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => scroll("right")}
+                    className="flex h-7 w-7 items-center justify-center rounded-full bg-slate-100 text-slate-600 shadow-sm transition hover:bg-slate-200 hover:text-slate-900"
+                    aria-label="Scroll right"
+                  >
+                    <FontAwesomeIcon icon={faChevronRight} className="text-[10px]" />
+                  </button>
+                </div>
+              </div>
               <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">
                 Hotel &amp; resort partners across Himachal
               </h2>
@@ -37,7 +69,10 @@ export function PartnerHotelsSectionClient({ hotels }: PartnerHotelsSectionClien
               </p>
             </div>
 
-            <div className="flex gap-3 overflow-x-auto px-2 pb-2 pt-2 text-xs [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div
+              ref={scrollRef}
+              className="flex gap-3 overflow-x-auto px-2 pb-2 pt-2 text-xs [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
               {hotels.map((hotel) => (
                 <article
                   key={hotel.id}

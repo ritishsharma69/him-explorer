@@ -119,6 +119,7 @@ export function CollectionsSectionClient({ primaryItems, offbeatItems }: Collect
               description="Ready-made ideas for weekend getaways, workations and short breaks you can further customise over a quick call."
               items={primaryItems}
               onCardClick={handleCardClick}
+              showArrows
             />
             <CollectionsRow
               heading="Unlock lesser-known wonders of Himachal"
