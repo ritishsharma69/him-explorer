@@ -10,45 +10,19 @@ interface DestinationCard {
   size: "small" | "medium" | "large";
 }
 
+// Grid layout: 4 columns on desktop
+// |Dharamshala(L)|Shimla     |Manali(L)  |Bir Billing|
+// |Dharamshala(L)|Kasol      |Manali(L)  |Spiti      |
 const FALLBACK_DESTINATIONS: DestinationCard[] = [
-  {
-    id: "manali",
-    name: "Manali",
-    imageUrl: "/harcode-image.png",
-    size: "large",
-  },
-  {
-    id: "shimla",
-    name: "Shimla",
-    imageUrl: "/harcode-image.png",
-    size: "medium",
-  },
-  {
-    id: "dharamshala",
-    name: "Dharamshala",
-    imageUrl: "/harcode-image.png",
-    size: "large",
-  },
-  {
-    id: "kasol",
-    name: "Kasol",
-    imageUrl: "/harcode-image.png",
-    size: "medium",
-  },
-  {
-    id: "bir-billing",
-    name: "Bir Billing",
-    imageUrl: "/harcode-image.png",
-    size: "medium",
-  },
-  {
-    id: "spiti",
-    name: "Spiti Valley",
-    imageUrl: "/harcode-image.png",
-    size: "medium",
-  },
+  { id: "dharamshala", name: "Dharamshala", imageUrl: "/harcode-image.png", size: "large" },
+  { id: "shimla", name: "Shimla", imageUrl: "/harcode-image.png", size: "medium" },
+  { id: "manali", name: "Manali", imageUrl: "/harcode-image.png", size: "large" },
+  { id: "bir-billing", name: "Bir Billing", imageUrl: "/harcode-image.png", size: "medium" },
+  { id: "kasol", name: "Kasol", imageUrl: "/harcode-image.png", size: "medium" },
+  { id: "spiti", name: "Spiti Valley", imageUrl: "/harcode-image.png", size: "medium" },
 ];
 
+// Map DB destination to card
 function mapDestination(doc: PopularDestinationDocument): DestinationCard {
   return {
     id: String(doc._id),
@@ -72,22 +46,15 @@ export async function PopularDestinationsSection() {
           <h2 className="text-lg font-semibold text-slate-900 sm:text-xl">
             Popular destinations
           </h2>
-          <div className="grid auto-rows-[180px] grid-cols-2 gap-3 sm:auto-rows-[200px] sm:grid-cols-4 sm:gap-4">
-            {destinations.map((dest, index) => {
-              // Bento grid sizing based on size property
-              let gridClasses = "";
-              if (dest.size === "large") {
-                gridClasses = "col-span-1 row-span-2 sm:col-span-1 sm:row-span-2";
-              } else if (dest.size === "medium") {
-                gridClasses = "col-span-1 row-span-1 sm:col-span-1 sm:row-span-1";
-              } else {
-                gridClasses = "col-span-1 row-span-1";
-              }
+          {/* Bento grid: 4 cols on desktop, 2 cols on mobile */}
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4" style={{ gridAutoRows: "140px" }}>
+            {destinations.map((dest) => {
+              const isLarge = dest.size === "large";
 
               return (
                 <article
                   key={dest.id}
-                  className={`group relative overflow-hidden rounded-2xl bg-slate-100 ${gridClasses}`}
+                  className={`group relative overflow-hidden rounded-2xl bg-slate-100 ${isLarge ? "row-span-2" : ""}`}
                 >
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img

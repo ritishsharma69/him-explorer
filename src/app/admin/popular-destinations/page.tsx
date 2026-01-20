@@ -8,20 +8,17 @@ import { readAndCompressImageFile } from "@/lib/client/image-utils";
 const ADMIN_FLAG_KEY = "himexplore_admin_logged_in";
 
 // Fixed 6 destinations - order and size locked
+// Grid layout: 4 columns on desktop
+// |Dharamshala(L)|Shimla     |Manali(L)  |Bir Billing|
+// |Dharamshala(L)|Kasol      |Manali(L)  |Spiti      |
 const FIXED_DESTINATIONS = [
-  { id: "manali", name: "Manali", size: "large" as const, order: 0 },
+  { id: "dharamshala", name: "Dharamshala", size: "large" as const, order: 0 },
   { id: "shimla", name: "Shimla", size: "medium" as const, order: 1 },
-  { id: "dharamshala", name: "Dharamshala", size: "large" as const, order: 2 },
-  { id: "kasol", name: "Kasol", size: "medium" as const, order: 3 },
-  { id: "bir-billing", name: "Bir Billing", size: "medium" as const, order: 4 },
+  { id: "manali", name: "Manali", size: "large" as const, order: 2 },
+  { id: "bir-billing", name: "Bir Billing", size: "medium" as const, order: 3 },
+  { id: "kasol", name: "Kasol", size: "medium" as const, order: 4 },
   { id: "spiti", name: "Spiti Valley", size: "medium" as const, order: 5 },
 ];
-
-interface DestinationImage {
-  _id?: string;
-  destinationId: string;
-  imageUrl: string;
-}
 
 export default function AdminPopularDestinationsPage() {
   const router = useRouter();
@@ -289,9 +286,7 @@ export default function AdminPopularDestinationsPage() {
                 return (
                   <div
                     key={dest.id}
-                    className={`group relative overflow-hidden rounded-xl bg-slate-700 transition-all hover:ring-2 hover:ring-sky-500 ${
-                      isLarge ? "row-span-2" : ""
-                    } ${isSuccess ? "ring-2 ring-green-500" : ""}`}
+                    className={`group relative overflow-hidden rounded-xl bg-slate-700 transition-all hover:ring-2 hover:ring-sky-500 ${isLarge ? "row-span-2" : ""} ${isSuccess ? "ring-2 ring-green-500" : ""}`}
                     style={{ cursor: "pointer" }}
                     onClick={() => !isUploading && triggerUpload(dest.id)}
                   >
