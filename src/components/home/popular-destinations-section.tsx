@@ -33,11 +33,17 @@ function mapDestination(doc: PopularDestinationDocument): DestinationCard {
 }
 
 export async function PopularDestinationsSection() {
-  const destinationsFromDb = await listPublicPopularDestinations();
-  const destinations =
-    destinationsFromDb.length > 0
-      ? destinationsFromDb.map(mapDestination)
-      : FALLBACK_DESTINATIONS;
+  let destinations: DestinationCard[] = FALLBACK_DESTINATIONS;
+
+  try {
+    const destinationsFromDb = await listPublicPopularDestinations();
+    if (destinationsFromDb.length > 0) {
+      destinations = destinationsFromDb.map(mapDestination);
+    }
+  } catch (error) {
+    console.error("Failed to fetch popular destinations:", error);
+    // Use fallback destinations on error
+  }
 
   return (
     <section className="py-6 sm:py-8">
