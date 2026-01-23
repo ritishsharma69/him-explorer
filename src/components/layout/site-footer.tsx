@@ -33,17 +33,6 @@ export function SiteFooter() {
 						<p className="max-w-md text-slate-200/90">
 							Local-first travel studio helping small groups plan relaxed, scenic itineraries across India instead of rushed checklists.
 						</p>
-						<div className="flex items-center gap-3 pt-1">
-							{/* eslint-disable-next-line @next/next/no-img-element */}
-							<img
-								src="/himachal-tourism.png"
-								alt="Tourism Partner"
-								className="h-10 w-auto object-contain"
-							/>
-							<span className="text-sm font-medium text-slate-300">
-								Trusted tourism partner
-							</span>
-						</div>
 					</div>
 
 					<div className="space-y-3">
